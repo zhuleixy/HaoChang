@@ -10,4 +10,9 @@
 
 @implementation MusicHallViewController
 
+-(void)viewDidLoad
+{
+  
+}
+
 @end

@@ -14,86 +14,78 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="YdM-40-iQ4" kind="relationship" relationship="rootViewController" id="cKw-C3-yuD"/>
+                        <segue destination="MUh-Ff-uus" kind="relationship" relationship="rootViewController" id="Lkw-VD-XTw"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1E-gz-snB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-632" y="-20"/>
+            <point key="canvasLocation" x="-1079" y="-1138"/>
         </scene>
         <!--Main View Controller-->
-        <scene sceneID="lbX-PK-i3m">
+        <scene sceneID="QRD-2Y-0kw">
             <objects>
-                <viewController id="YdM-40-iQ4" customClass="MainViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Q8M-do-wRJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="if8-fT-FSy"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cAu-Yc-7Tv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="vUx-oV-rTs">
+                <tabBarController id="MUh-Ff-uus" customClass="MainViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="PJ7-8L-6aR">
                         <nil key="title"/>
-                        <view key="titleView" contentMode="scaleToFill" id="d1b-ot-WGE">
+                        <view key="titleView" contentMode="scaleToFill" id="Lvb-v5-55M">
                             <rect key="frame" x="75" y="0.0" width="170" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhf-vz-zh8" customClass="TabBarItemButton">
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJO-Pi-u3V" customClass="TabBarItemButton">
+                                    <rect key="frame" x="135" y="0.0" width="35" height="44"/>
+                                    <state key="normal" title="我的">
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onTabBarButtonClicked:" destination="MUh-Ff-uus" eventType="touchUpInside" id="kRT-JA-JI3"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xF1-H6-Wfz" customClass="TabBarItemButton">
                                     <rect key="frame" x="67.5" y="0.0" width="35" height="44"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="35" id="56I-Ca-mVG"/>
-                                        <constraint firstAttribute="height" constant="44" id="wB1-oT-idT"/>
+                                        <constraint firstAttribute="height" constant="44" id="0lp-qN-xsp"/>
+                                        <constraint firstAttribute="width" constant="35" id="vFj-ir-hax"/>
                                     </constraints>
                                     <state key="normal" title="发现">
                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
-                                        <action selector="onTabBarButtonClicked:" destination="YdM-40-iQ4" eventType="touchUpInside" id="Yqa-qI-bhT"/>
+                                        <action selector="onTabBarButtonClicked:" destination="MUh-Ff-uus" eventType="touchUpInside" id="MDU-0k-kyP"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzL-BO-Vkz" customClass="TabBarItemButton">
-                                    <rect key="frame" x="135" y="0.0" width="35" height="44"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="KEi-2x-nJK"/>
-                                    </constraints>
-                                    <state key="normal" title="我的">
-                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="onTabBarButtonClicked:" destination="YdM-40-iQ4" eventType="touchUpInside" id="6Vn-gl-1Nx"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6NS-By-HiZ" customClass="TabBarItemButton">
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehN-Yn-2Nd" customClass="TabBarItemButton">
                                     <rect key="frame" x="0.0" y="0.0" width="35" height="44"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="xpO-9j-h39"/>
-                                    </constraints>
                                     <state key="normal" title="乐馆">
                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
-                                        <action selector="onTabBarButtonClicked:" destination="YdM-40-iQ4" eventType="touchUpInside" id="qsW-RF-ArO"/>
+                                        <action selector="onTabBarButtonClicked:" destination="MUh-Ff-uus" eventType="touchUpInside" id="gjI-6S-HTz"/>
                                     </connections>
                                 </button>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="xhf-vz-zh8" firstAttribute="centerX" secondItem="d1b-ot-WGE" secondAttribute="centerX" id="2sy-K3-AeV"/>
-                                <constraint firstItem="6NS-By-HiZ" firstAttribute="leading" secondItem="d1b-ot-WGE" secondAttribute="leading" id="6OZ-0W-m73"/>
-                                <constraint firstItem="mzL-BO-Vkz" firstAttribute="width" secondItem="6NS-By-HiZ" secondAttribute="width" id="9P7-NH-Txs"/>
-                                <constraint firstAttribute="trailing" secondItem="mzL-BO-Vkz" secondAttribute="trailing" id="MhH-ew-tvo"/>
-                                <constraint firstAttribute="bottom" secondItem="6NS-By-HiZ" secondAttribute="bottom" id="QvP-mL-vge"/>
-                                <constraint firstItem="xhf-vz-zh8" firstAttribute="width" secondItem="6NS-By-HiZ" secondAttribute="width" id="ajn-Hc-4gu"/>
-                                <constraint firstAttribute="bottom" secondItem="mzL-BO-Vkz" secondAttribute="bottom" id="miV-vb-h01"/>
-                                <constraint firstAttribute="bottom" secondItem="xhf-vz-zh8" secondAttribute="bottom" id="ue2-cC-L9e"/>
+                                <constraint firstAttribute="bottom" secondItem="xF1-H6-Wfz" secondAttribute="bottom" id="I0F-Gy-s5f"/>
+                                <constraint firstAttribute="bottom" secondItem="ehN-Yn-2Nd" secondAttribute="bottom" id="MVv-De-e6f"/>
+                                <constraint firstItem="xF1-H6-Wfz" firstAttribute="width" secondItem="ehN-Yn-2Nd" secondAttribute="width" id="QOY-9c-ORw"/>
+                                <constraint firstItem="bJO-Pi-u3V" firstAttribute="height" secondItem="ehN-Yn-2Nd" secondAttribute="height" id="VXC-au-Pfu"/>
+                                <constraint firstItem="ehN-Yn-2Nd" firstAttribute="leading" secondItem="Lvb-v5-55M" secondAttribute="leading" id="WSX-Kk-tOT"/>
+                                <constraint firstItem="xF1-H6-Wfz" firstAttribute="centerX" secondItem="Lvb-v5-55M" secondAttribute="centerX" id="Wvr-3o-R4M"/>
+                                <constraint firstAttribute="trailing" secondItem="bJO-Pi-u3V" secondAttribute="trailing" id="X7N-E6-bIS"/>
+                                <constraint firstItem="bJO-Pi-u3V" firstAttribute="width" secondItem="ehN-Yn-2Nd" secondAttribute="width" id="f6R-Vi-B2F"/>
+                                <constraint firstAttribute="bottom" secondItem="bJO-Pi-u3V" secondAttribute="bottom" id="j4N-PD-toi"/>
+                                <constraint firstItem="xF1-H6-Wfz" firstAttribute="height" secondItem="ehN-Yn-2Nd" secondAttribute="height" id="tCD-5i-mpo"/>
                             </constraints>
                         </view>
                     </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wYp-1t-OzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="qMV-Zh-zcw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yk8-g8-8lW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-291" y="-20"/>
+            <point key="canvasLocation" x="-613" y="-1138"/>
         </scene>
     </scenes>
 </document>

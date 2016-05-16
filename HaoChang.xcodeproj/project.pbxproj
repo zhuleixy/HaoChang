@@ -12,6 +12,9 @@
 		1844D9141CE43B2E00F6CADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1844D9121CE43B2E00F6CADD /* Main.storyboard */; };
 		1844D9161CE43B2E00F6CADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1844D9151CE43B2E00F6CADD /* Assets.xcassets */; };
 		1844D9191CE43B2E00F6CADD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1844D9171CE43B2E00F6CADD /* LaunchScreen.storyboard */; };
+		1865AFC31CE96022005505C1 /* MusicHall.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1865AFC21CE96022005505C1 /* MusicHall.storyboard */; };
+		1865AFC51CE970B9005505C1 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1865AFC41CE970B9005505C1 /* Discover.storyboard */; };
+		1865AFC91CE970D3005505C1 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1865AFC81CE970D3005505C1 /* Mine.storyboard */; };
 		18A64C3E1CE8ACEB00EFE8D7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C3D1CE8ACEB00EFE8D7 /* MainViewController.m */; };
 		18A64C661CE8B95500EFE8D7 /* TabBarItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C651CE8B95500EFE8D7 /* TabBarItemButton.m */; };
 		18A64C691CE8C7EB00EFE8D7 /* MusicHallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C681CE8C7EB00EFE8D7 /* MusicHallViewController.m */; };
@@ -28,6 +31,9 @@
 		1844D9151CE43B2E00F6CADD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1844D9181CE43B2E00F6CADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1844D91A1CE43B2E00F6CADD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1865AFC21CE96022005505C1 /* MusicHall.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MusicHall.storyboard; sourceTree = "<group>"; };
+		1865AFC41CE970B9005505C1 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
+		1865AFC81CE970D3005505C1 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
 		18A64C3C1CE8ACEB00EFE8D7 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		18A64C3D1CE8ACEB00EFE8D7 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		18A64C641CE8B95500EFE8D7 /* TabBarItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarItemButton.h; sourceTree = "<group>"; };
@@ -74,7 +80,6 @@
 				1844D90D1CE43B2E00F6CADD /* AppDelegate.m */,
 				18A64C621CE8B8C900EFE8D7 /* Controller */,
 				18A64C631CE8B8DC00EFE8D7 /* View */,
-				1844D9121CE43B2E00F6CADD /* Main.storyboard */,
 				1844D9151CE43B2E00F6CADD /* Assets.xcassets */,
 				1844D9171CE43B2E00F6CADD /* LaunchScreen.storyboard */,
 				1844D91A1CE43B2E00F6CADD /* Info.plist */,
@@ -96,12 +101,16 @@
 			children = (
 				18A64C3C1CE8ACEB00EFE8D7 /* MainViewController.h */,
 				18A64C3D1CE8ACEB00EFE8D7 /* MainViewController.m */,
+				1844D9121CE43B2E00F6CADD /* Main.storyboard */,
 				18A64C671CE8C7EB00EFE8D7 /* MusicHallViewController.h */,
 				18A64C681CE8C7EB00EFE8D7 /* MusicHallViewController.m */,
+				1865AFC21CE96022005505C1 /* MusicHall.storyboard */,
 				18A64C6A1CE8C81E00EFE8D7 /* DiscoverViewController.h */,
 				18A64C6B1CE8C81E00EFE8D7 /* DiscoverViewController.m */,
+				1865AFC41CE970B9005505C1 /* Discover.storyboard */,
 				18A64C6D1CE8C82F00EFE8D7 /* MineViewController.h */,
 				18A64C6E1CE8C82F00EFE8D7 /* MineViewController.m */,
+				1865AFC81CE970D3005505C1 /* Mine.storyboard */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -173,6 +182,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1844D9191CE43B2E00F6CADD /* LaunchScreen.storyboard in Resources */,
+				1865AFC31CE96022005505C1 /* MusicHall.storyboard in Resources */,
+				1865AFC51CE970B9005505C1 /* Discover.storyboard in Resources */,
+				1865AFC91CE970D3005505C1 /* Mine.storyboard in Resources */,
 				1844D9161CE43B2E00F6CADD /* Assets.xcassets in Resources */,
 				1844D9141CE43B2E00F6CADD /* Main.storyboard in Resources */,
 			);

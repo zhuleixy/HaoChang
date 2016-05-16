@@ -8,15 +8,13 @@
 
 #import "MainViewController.h"
 #import "TabBarItemButton.h"
-#import "MusicHallViewController.h"
-#import "DiscoverViewController.h"
-#import "MineViewController.h"
+
 
 @interface MainViewController ()
 
-@property (nonatomic, strong) MusicHallViewController *musicHallVC;
-@property (nonatomic, strong) DiscoverViewController *discoverVC;
-@property (nonatomic, strong) MineViewController *mineVC;
+@property (nonatomic, strong) UIViewController *musicHallInitialVC;
+@property (nonatomic, strong) UIViewController *discoverInitialVC;
+@property (nonatomic, strong) UIViewController *mineInitialVC;
 @property (nonatomic, strong) TabBarItemButton *currentSelectedButton;
 
 @end
@@ -51,7 +49,8 @@
 
 - (void)initView
 {
-
+   
+    
 }
 
 #pragma mark - Setter & Gatter
@@ -69,17 +68,34 @@
     switch (sender.tag) {
         case 1:
         {
-            
+            if (!self.musicHallInitialVC) {
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"MusicHall" bundle:nil];
+                _musicHallInitialVC = [storyboard instantiateInitialViewController];
+                [self addChildViewController:self.musicHallInitialVC];
+            }
+            [self setSelectedViewController:self.musicHallInitialVC];
             break;
         }
         case 2:
         {
-            
+            if (!self.discoverInitialVC) {
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Discover" bundle:nil];
+                _discoverInitialVC = [storyboard instantiateInitialViewController];
+                [self addChildViewController:self.discoverInitialVC];
+            }
+            [self setSelectedViewController:self.discoverInitialVC];
+            break;
             break;
         }
         case 3:
         {
-            
+            if (!self.mineInitialVC) {
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Mine" bundle:nil];
+                _mineInitialVC = [storyboard instantiateInitialViewController];
+                [self addChildViewController:self.mineInitialVC];
+            }
+            [self setSelectedViewController:self.mineInitialVC];
+            break;
             break;
         }
         default:

@@ -10,4 +10,26 @@
 
 @implementation DiscoverViewController
 
+-(void)viewDidLoad
+{
+ 
+}
+
+//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return 30;
+//}
+//
+//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    static NSString *CellIdentifier = @"Cell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
+//    cell.textLabel.textColor = [UIColor redColor];
+//    cell.textLabel.text = @"aaaaaaaa";
+//    return cell;
+//}
+
 @end

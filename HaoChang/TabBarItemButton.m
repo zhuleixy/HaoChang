@@ -44,7 +44,6 @@
 
 - (void)setSelected:(BOOL)selected
 {
-    
     if (selected) {
         [self.titleLabel setTextColor:[UIColor redColor]];
         [self.bottomLine setHidden:NO];
