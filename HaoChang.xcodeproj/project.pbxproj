@@ -1,0 +1,350 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1844D90B1CE43B2E00F6CADD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1844D90A1CE43B2E00F6CADD /* main.m */; };
+		1844D90E1CE43B2E00F6CADD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1844D90D1CE43B2E00F6CADD /* AppDelegate.m */; };
+		1844D9141CE43B2E00F6CADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1844D9121CE43B2E00F6CADD /* Main.storyboard */; };
+		1844D9161CE43B2E00F6CADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1844D9151CE43B2E00F6CADD /* Assets.xcassets */; };
+		1844D9191CE43B2E00F6CADD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1844D9171CE43B2E00F6CADD /* LaunchScreen.storyboard */; };
+		18A64C3E1CE8ACEB00EFE8D7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C3D1CE8ACEB00EFE8D7 /* MainViewController.m */; };
+		18A64C661CE8B95500EFE8D7 /* TabBarItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C651CE8B95500EFE8D7 /* TabBarItemButton.m */; };
+		18A64C691CE8C7EB00EFE8D7 /* MusicHallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C681CE8C7EB00EFE8D7 /* MusicHallViewController.m */; };
+		18A64C6C1CE8C81E00EFE8D7 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C6B1CE8C81E00EFE8D7 /* DiscoverViewController.m */; };
+		18A64C6F1CE8C82F00EFE8D7 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C6E1CE8C82F00EFE8D7 /* MineViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1844D9061CE43B2D00F6CADD /* HaoChang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HaoChang.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1844D90A1CE43B2E00F6CADD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1844D90C1CE43B2E00F6CADD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1844D90D1CE43B2E00F6CADD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1844D9131CE43B2E00F6CADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1844D9151CE43B2E00F6CADD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1844D9181CE43B2E00F6CADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1844D91A1CE43B2E00F6CADD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18A64C3C1CE8ACEB00EFE8D7 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		18A64C3D1CE8ACEB00EFE8D7 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		18A64C641CE8B95500EFE8D7 /* TabBarItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarItemButton.h; sourceTree = "<group>"; };
+		18A64C651CE8B95500EFE8D7 /* TabBarItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarItemButton.m; sourceTree = "<group>"; };
+		18A64C671CE8C7EB00EFE8D7 /* MusicHallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicHallViewController.h; sourceTree = "<group>"; };
+		18A64C681CE8C7EB00EFE8D7 /* MusicHallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicHallViewController.m; sourceTree = "<group>"; };
+		18A64C6A1CE8C81E00EFE8D7 /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		18A64C6B1CE8C81E00EFE8D7 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		18A64C6D1CE8C82F00EFE8D7 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
+		18A64C6E1CE8C82F00EFE8D7 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1844D9031CE43B2D00F6CADD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1844D8FD1CE43B2D00F6CADD = {
+			isa = PBXGroup;
+			children = (
+				1844D9081CE43B2E00F6CADD /* HaoChang */,
+				1844D9071CE43B2D00F6CADD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1844D9071CE43B2D00F6CADD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1844D9061CE43B2D00F6CADD /* HaoChang.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1844D9081CE43B2E00F6CADD /* HaoChang */ = {
+			isa = PBXGroup;
+			children = (
+				1844D90C1CE43B2E00F6CADD /* AppDelegate.h */,
+				1844D90D1CE43B2E00F6CADD /* AppDelegate.m */,
+				18A64C621CE8B8C900EFE8D7 /* Controller */,
+				18A64C631CE8B8DC00EFE8D7 /* View */,
+				1844D9121CE43B2E00F6CADD /* Main.storyboard */,
+				1844D9151CE43B2E00F6CADD /* Assets.xcassets */,
+				1844D9171CE43B2E00F6CADD /* LaunchScreen.storyboard */,
+				1844D91A1CE43B2E00F6CADD /* Info.plist */,
+				1844D9091CE43B2E00F6CADD /* Supporting Files */,
+			);
+			path = HaoChang;
+			sourceTree = "<group>";
+		};
+		1844D9091CE43B2E00F6CADD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1844D90A1CE43B2E00F6CADD /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		18A64C621CE8B8C900EFE8D7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				18A64C3C1CE8ACEB00EFE8D7 /* MainViewController.h */,
+				18A64C3D1CE8ACEB00EFE8D7 /* MainViewController.m */,
+				18A64C671CE8C7EB00EFE8D7 /* MusicHallViewController.h */,
+				18A64C681CE8C7EB00EFE8D7 /* MusicHallViewController.m */,
+				18A64C6A1CE8C81E00EFE8D7 /* DiscoverViewController.h */,
+				18A64C6B1CE8C81E00EFE8D7 /* DiscoverViewController.m */,
+				18A64C6D1CE8C82F00EFE8D7 /* MineViewController.h */,
+				18A64C6E1CE8C82F00EFE8D7 /* MineViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		18A64C631CE8B8DC00EFE8D7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18A64C641CE8B95500EFE8D7 /* TabBarItemButton.h */,
+				18A64C651CE8B95500EFE8D7 /* TabBarItemButton.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1844D9051CE43B2D00F6CADD /* HaoChang */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1844D91D1CE43B2E00F6CADD /* Build configuration list for PBXNativeTarget "HaoChang" */;
+			buildPhases = (
+				1844D9021CE43B2D00F6CADD /* Sources */,
+				1844D9031CE43B2D00F6CADD /* Frameworks */,
+				1844D9041CE43B2D00F6CADD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HaoChang;
+			productName = HaoChang;
+			productReference = 1844D9061CE43B2D00F6CADD /* HaoChang.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1844D8FE1CE43B2D00F6CADD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = zhulei;
+				TargetAttributes = {
+					1844D9051CE43B2D00F6CADD = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 1844D9011CE43B2D00F6CADD /* Build configuration list for PBXProject "HaoChang" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1844D8FD1CE43B2D00F6CADD;
+			productRefGroup = 1844D9071CE43B2D00F6CADD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1844D9051CE43B2D00F6CADD /* HaoChang */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1844D9041CE43B2D00F6CADD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1844D9191CE43B2E00F6CADD /* LaunchScreen.storyboard in Resources */,
+				1844D9161CE43B2E00F6CADD /* Assets.xcassets in Resources */,
+				1844D9141CE43B2E00F6CADD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1844D9021CE43B2D00F6CADD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18A64C661CE8B95500EFE8D7 /* TabBarItemButton.m in Sources */,
+				18A64C6F1CE8C82F00EFE8D7 /* MineViewController.m in Sources */,
+				18A64C6C1CE8C81E00EFE8D7 /* DiscoverViewController.m in Sources */,
+				1844D90E1CE43B2E00F6CADD /* AppDelegate.m in Sources */,
+				18A64C3E1CE8ACEB00EFE8D7 /* MainViewController.m in Sources */,
+				18A64C691CE8C7EB00EFE8D7 /* MusicHallViewController.m in Sources */,
+				1844D90B1CE43B2E00F6CADD /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1844D9121CE43B2E00F6CADD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1844D9131CE43B2E00F6CADD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1844D9171CE43B2E00F6CADD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1844D9181CE43B2E00F6CADD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1844D91B1CE43B2E00F6CADD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1844D91C1CE43B2E00F6CADD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1844D91E1CE43B2E00F6CADD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HaoChang/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hualeisoft.HaoChang;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1844D91F1CE43B2E00F6CADD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HaoChang/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hualeisoft.HaoChang;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1844D9011CE43B2D00F6CADD /* Build configuration list for PBXProject "HaoChang" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1844D91B1CE43B2E00F6CADD /* Debug */,
+				1844D91C1CE43B2E00F6CADD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1844D91D1CE43B2E00F6CADD /* Build configuration list for PBXNativeTarget "HaoChang" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1844D91E1CE43B2E00F6CADD /* Debug */,
+				1844D91F1CE43B2E00F6CADD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1844D8FE1CE43B2D00F6CADD /* Project object */;
+}
