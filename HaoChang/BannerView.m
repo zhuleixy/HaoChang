@@ -42,6 +42,8 @@
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
     [self addSubview:self.scrollView];
     _pageControl = [[UIPageControl alloc] initWithFrame:CGRectZero];
+    [self.pageControl setCurrentPageIndicatorTintColor:[UIColor redColor]];
+    [self.pageControl setPageIndicatorTintColor:[UIColor whiteColor]];
     [self addSubview:self.pageControl];
     [self makeConstraint];
     
@@ -68,9 +70,11 @@
     [self addConstraints:scrollViewV];
     //pageControl
     NSArray *pageControlH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(0)-[pageControl]-(0)-|" options:0 metrics:nil views:viewDic];
-    NSArray *pageControlV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=0)-[pageControl]-(0)-|" options:0 metrics:nil views:viewDic];
     [self addConstraints:pageControlH];
+    NSArray *pageControlV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=0)-[pageControl(32)]-(0)-|" options:0 metrics:nil views:viewDic];
     [self addConstraints:pageControlV];
+    NSLayoutConstraint *pageControlCenter = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    [self addConstraint:pageControlCenter];
     
 }
 
@@ -92,15 +96,17 @@
         imageView.tag = i;
         [self.scrollView addSubview:imageView];
     }
-    self.currentPage = 1;
-    self.totalPage = imageArray.count;
+    self.currentPage = 0;
+    self.totalPage = imageArray.count - 1;
+    self.pageControl.numberOfPages = self.totalPage + 1;
+    self.pageControl.currentPage = self.currentPage;
 }
 
 - (void)switchBanner
 {
     if (self.currentPage == self.totalPage) {
         self.moveRight = YES;
-    } else if (self.currentPage == 1) {
+    } else if (self.currentPage == 0) {
         self.moveRight = NO;
     }
     
@@ -110,10 +116,11 @@
         self.currentPage++;
     }
     
-    CGFloat offsetX = (self.currentPage - 1) * CGRectGetWidth(self.scrollView.bounds);
+    CGFloat offsetX = self.currentPage * CGRectGetWidth(self.scrollView.bounds);
     CGPoint offset = self.scrollView.contentOffset;
     offset.x = offsetX;
     [self.scrollView setContentOffset:offset animated:YES];
+    self.pageControl.currentPage = self.currentPage;
 }
 
 @end

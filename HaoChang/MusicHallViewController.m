@@ -38,7 +38,7 @@
     //headView
     _headerViewController = [[CollectionHeaderViewController alloc] initWithNibName:@"CollectionHeaderViewController" bundle:nil];
     CGFloat width = CGRectGetWidth(self.view.bounds);
-    CGFloat height = (CGRectGetWidth(self.view.bounds) * 300 / 640) + 40 + 50;//banner截图比例300/640
+    CGFloat height = (CGRectGetWidth(self.view.bounds) * 300 / 640) + 46 + 50;//banner截图比例300/640
     CGRect frame = self.headerViewController.view.frame;
     frame.size.width = width;
     frame.size.height = height;
