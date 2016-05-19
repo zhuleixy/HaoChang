@@ -1,5 +1,5 @@
 //
-//  ScoreLabel.h
+//  BannerView.h
 //  HaoChang
 //
 //  Created by apple on 16/5/19.
@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-/**
- *  圆角会占用一定宽度，重写intrinsicContentSize返回合适的宽度
- */
-@interface ScoreLabel : UILabel
+@interface BannerView : UIView
+
+- (void)setImageArray:(NSArray *)imageArray;
 
 @end

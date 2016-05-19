@@ -16,7 +16,6 @@
 {
     if (self = [super initWithFrame:frame]) {
         [self initView];
-        [self makeConstraint];
     }
     return self;
 }
@@ -44,6 +43,8 @@
     [self.songNameLabel setTextColor:[UIColor whiteColor]];
     [self.songNameLabel setFont:[UIFont systemFontOfSize:13]];
     [self addSubview:self.songNameLabel];
+    
+    [self makeConstraint];
 }
 
 - (void)makeConstraint

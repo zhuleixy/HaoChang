@@ -23,6 +23,9 @@
 		18A64C6C1CE8C81E00EFE8D7 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C6B1CE8C81E00EFE8D7 /* DiscoverViewController.m */; };
 		18A64C6F1CE8C82F00EFE8D7 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C6E1CE8C82F00EFE8D7 /* MineViewController.m */; };
 		18B354691CED8641006E898B /* ScoreLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B354681CED8641006E898B /* ScoreLabel.m */; };
+		18B3546C1CED8FB1006E898B /* BannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3546B1CED8FB1006E898B /* BannerView.m */; };
+		18B354821CEDA654006E898B /* CollectionHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B354801CEDA654006E898B /* CollectionHeaderViewController.m */; };
+		18B354831CEDA654006E898B /* CollectionHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B354811CEDA654006E898B /* CollectionHeaderViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +56,11 @@
 		18A64C6E1CE8C82F00EFE8D7 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		18B354671CED8641006E898B /* ScoreLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreLabel.h; sourceTree = "<group>"; };
 		18B354681CED8641006E898B /* ScoreLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreLabel.m; sourceTree = "<group>"; };
+		18B3546A1CED8FB1006E898B /* BannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerView.h; sourceTree = "<group>"; };
+		18B3546B1CED8FB1006E898B /* BannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerView.m; sourceTree = "<group>"; };
+		18B3547F1CEDA654006E898B /* CollectionHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionHeaderViewController.h; sourceTree = "<group>"; };
+		18B354801CEDA654006E898B /* CollectionHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionHeaderViewController.m; sourceTree = "<group>"; };
+		18B354811CEDA654006E898B /* CollectionHeaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionHeaderViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +138,9 @@
 				18A64C6D1CE8C82F00EFE8D7 /* MineViewController.h */,
 				18A64C6E1CE8C82F00EFE8D7 /* MineViewController.m */,
 				1865AFC81CE970D3005505C1 /* Mine.storyboard */,
+				18B3547F1CEDA654006E898B /* CollectionHeaderViewController.h */,
+				18B354801CEDA654006E898B /* CollectionHeaderViewController.m */,
+				18B354811CEDA654006E898B /* CollectionHeaderViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -143,6 +154,8 @@
 				1870CB711CECA30700501BB5 /* SongCollectionViewCell.m */,
 				18B354671CED8641006E898B /* ScoreLabel.h */,
 				18B354681CED8641006E898B /* ScoreLabel.m */,
+				18B3546A1CED8FB1006E898B /* BannerView.h */,
+				18B3546B1CED8FB1006E898B /* BannerView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -208,6 +221,7 @@
 				1865AFC31CE96022005505C1 /* MusicHall.storyboard in Resources */,
 				1865AFC51CE970B9005505C1 /* Discover.storyboard in Resources */,
 				1865AFC91CE970D3005505C1 /* Mine.storyboard in Resources */,
+				18B354831CEDA654006E898B /* CollectionHeaderViewController.xib in Resources */,
 				1844D9161CE43B2E00F6CADD /* Assets.xcassets in Resources */,
 				1844D9141CE43B2E00F6CADD /* Main.storyboard in Resources */,
 			);
@@ -224,7 +238,9 @@
 				1870CB6F1CECA0AF00501BB5 /* Song.m in Sources */,
 				18A64C661CE8B95500EFE8D7 /* TabBarItemButton.m in Sources */,
 				18A64C6F1CE8C82F00EFE8D7 /* MineViewController.m in Sources */,
+				18B3546C1CED8FB1006E898B /* BannerView.m in Sources */,
 				18A64C6C1CE8C81E00EFE8D7 /* DiscoverViewController.m in Sources */,
+				18B354821CEDA654006E898B /* CollectionHeaderViewController.m in Sources */,
 				18B354691CED8641006E898B /* ScoreLabel.m in Sources */,
 				1844D90E1CE43B2E00F6CADD /* AppDelegate.m in Sources */,
 				18A64C3E1CE8ACEB00EFE8D7 /* MainViewController.m in Sources */,
@@ -344,9 +360,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HaoChang/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hualeisoft.HaoChang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -355,9 +373,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HaoChang/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hualeisoft.HaoChang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
