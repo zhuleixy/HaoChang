@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CollectionHeaderViewController">
             <connections>
+                <outlet property="btnContainerView" destination="JRU-Jw-S45" id="ZsN-yK-etn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,9 +18,47 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRU-Jw-S45">
                     <rect key="frame" x="0.0" y="144" width="320" height="46"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHf-es-rtt">
+                            <rect key="frame" x="0.0" y="8" width="80" height="30"/>
+                            <state key="normal" title="推荐">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94k-JG-uCQ">
+                            <rect key="frame" x="80" y="8" width="80" height="30"/>
+                            <state key="normal" title="地区">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DT4-KM-cFi">
+                            <rect key="frame" x="160" y="8" width="80" height="30"/>
+                            <state key="normal" title="榜首">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nA-Zu-nqH">
+                            <rect key="frame" x="240" y="8" width="80" height="30"/>
+                            <state key="normal" title="猜分">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </state>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="94k-JG-uCQ" firstAttribute="width" secondItem="eHf-es-rtt" secondAttribute="width" id="3Wd-QK-oNU"/>
+                        <constraint firstItem="DT4-KM-cFi" firstAttribute="leading" secondItem="94k-JG-uCQ" secondAttribute="trailing" id="7Iv-Xy-hEX"/>
                         <constraint firstAttribute="height" constant="46" id="98T-xE-5sq"/>
+                        <constraint firstItem="7nA-Zu-nqH" firstAttribute="width" secondItem="eHf-es-rtt" secondAttribute="width" id="Ds9-6e-tRd"/>
+                        <constraint firstItem="7nA-Zu-nqH" firstAttribute="centerY" secondItem="JRU-Jw-S45" secondAttribute="centerY" id="MBv-GP-V91"/>
+                        <constraint firstItem="94k-JG-uCQ" firstAttribute="leading" secondItem="eHf-es-rtt" secondAttribute="trailing" id="OXF-S0-Feb"/>
+                        <constraint firstItem="DT4-KM-cFi" firstAttribute="width" secondItem="eHf-es-rtt" secondAttribute="width" id="PTU-lN-RtL"/>
+                        <constraint firstItem="7nA-Zu-nqH" firstAttribute="leading" secondItem="DT4-KM-cFi" secondAttribute="trailing" id="Pgz-Tj-7O1"/>
+                        <constraint firstItem="eHf-es-rtt" firstAttribute="leading" secondItem="JRU-Jw-S45" secondAttribute="leading" id="WGC-dp-7ef"/>
+                        <constraint firstItem="eHf-es-rtt" firstAttribute="centerY" secondItem="JRU-Jw-S45" secondAttribute="centerY" id="XKc-2X-KLk"/>
+                        <constraint firstItem="DT4-KM-cFi" firstAttribute="centerY" secondItem="JRU-Jw-S45" secondAttribute="centerY" id="Yqo-Pu-b2P"/>
+                        <constraint firstItem="94k-JG-uCQ" firstAttribute="centerY" secondItem="JRU-Jw-S45" secondAttribute="centerY" id="e7V-Up-TUG"/>
+                        <constraint firstAttribute="trailing" secondItem="7nA-Zu-nqH" secondAttribute="trailing" id="k1n-qR-sJf"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全国榜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3K-hm-gE9">

@@ -12,6 +12,7 @@
 @interface CollectionHeaderViewController ()
 
 @property (nonatomic, strong) BannerView *bannerView;
+@property (weak, nonatomic) IBOutlet UIView *btnContainerView;
 
 @end
 
@@ -35,11 +36,20 @@
     [imageArray addObject:[UIImage imageNamed:@"banner3"]];
  
     [self.bannerView performSelector:@selector(setImageArray:) withObject:[NSArray arrayWithArray:imageArray] afterDelay:1];
-    
     //[self.bannerView setImageArray:imageArray];
+    
+    //添加分割线
+    CGFloat btnSpacing = CGRectGetWidth(self.btnContainerView.bounds) / 4;
+    CGFloat splitLineHeight = 20;
+    CGFloat splitLineFrameY = (CGRectGetHeight(self.btnContainerView.bounds) - splitLineHeight) / 2;
+    for (int i = 0; i < 3; i++)
+    {
+        CALayer *splitLine = [[CALayer alloc] init];
+        splitLine.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1].CGColor;
+        splitLine.frame = CGRectMake(btnSpacing * (i + 1), splitLineFrameY, 1, splitLineHeight);
+        [self.btnContainerView.layer addSublayer:splitLine];
+    }
 }
-
-
 
 - (void)makeConstraint
 {
