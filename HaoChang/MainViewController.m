@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UIViewController *discoverInitialVC;
 @property (nonatomic, strong) UIViewController *mineInitialVC;
 @property (nonatomic, strong) TabBarItemButton *currentSelectedButton;
+@property (weak, nonatomic) IBOutlet TabBarItemButton *musicHallBtn;
 
 @end
 
@@ -49,8 +50,13 @@
 
 - (void)initView
 {
-   
-    
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"homepage_record.png"]];
+//    [self.tabBar addSubview:imageView];
+//     UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selectSongs:)];
+//    [self.tabBar addGestureRecognizer:tapGesture];
+    //选中乐馆
+    [self.musicHallBtn setSelected:YES];
+    [self onTabBarButtonClicked:self.musicHallBtn];
 }
 
 #pragma mark - Setter & Gatter

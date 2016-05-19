@@ -15,11 +15,14 @@
 		1865AFC31CE96022005505C1 /* MusicHall.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1865AFC21CE96022005505C1 /* MusicHall.storyboard */; };
 		1865AFC51CE970B9005505C1 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1865AFC41CE970B9005505C1 /* Discover.storyboard */; };
 		1865AFC91CE970D3005505C1 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1865AFC81CE970D3005505C1 /* Mine.storyboard */; };
+		1870CB6F1CECA0AF00501BB5 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 1870CB6E1CECA0AF00501BB5 /* Song.m */; };
+		1870CB721CECA30700501BB5 /* SongCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1870CB711CECA30700501BB5 /* SongCollectionViewCell.m */; };
 		18A64C3E1CE8ACEB00EFE8D7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C3D1CE8ACEB00EFE8D7 /* MainViewController.m */; };
 		18A64C661CE8B95500EFE8D7 /* TabBarItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C651CE8B95500EFE8D7 /* TabBarItemButton.m */; };
 		18A64C691CE8C7EB00EFE8D7 /* MusicHallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C681CE8C7EB00EFE8D7 /* MusicHallViewController.m */; };
 		18A64C6C1CE8C81E00EFE8D7 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C6B1CE8C81E00EFE8D7 /* DiscoverViewController.m */; };
 		18A64C6F1CE8C82F00EFE8D7 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C6E1CE8C82F00EFE8D7 /* MineViewController.m */; };
+		18B354691CED8641006E898B /* ScoreLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B354681CED8641006E898B /* ScoreLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,10 @@
 		1865AFC21CE96022005505C1 /* MusicHall.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MusicHall.storyboard; sourceTree = "<group>"; };
 		1865AFC41CE970B9005505C1 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		1865AFC81CE970D3005505C1 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
+		1870CB6D1CECA0AF00501BB5 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
+		1870CB6E1CECA0AF00501BB5 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
+		1870CB701CECA30700501BB5 /* SongCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongCollectionViewCell.h; sourceTree = "<group>"; };
+		1870CB711CECA30700501BB5 /* SongCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongCollectionViewCell.m; sourceTree = "<group>"; };
 		18A64C3C1CE8ACEB00EFE8D7 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		18A64C3D1CE8ACEB00EFE8D7 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		18A64C641CE8B95500EFE8D7 /* TabBarItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarItemButton.h; sourceTree = "<group>"; };
@@ -44,6 +51,8 @@
 		18A64C6B1CE8C81E00EFE8D7 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		18A64C6D1CE8C82F00EFE8D7 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		18A64C6E1CE8C82F00EFE8D7 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		18B354671CED8641006E898B /* ScoreLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreLabel.h; sourceTree = "<group>"; };
+		18B354681CED8641006E898B /* ScoreLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +89,7 @@
 				1844D90D1CE43B2E00F6CADD /* AppDelegate.m */,
 				18A64C621CE8B8C900EFE8D7 /* Controller */,
 				18A64C631CE8B8DC00EFE8D7 /* View */,
+				1870CB6C1CECA05D00501BB5 /* Model */,
 				1844D9151CE43B2E00F6CADD /* Assets.xcassets */,
 				1844D9171CE43B2E00F6CADD /* LaunchScreen.storyboard */,
 				1844D91A1CE43B2E00F6CADD /* Info.plist */,
@@ -94,6 +104,15 @@
 				1844D90A1CE43B2E00F6CADD /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1870CB6C1CECA05D00501BB5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1870CB6D1CECA0AF00501BB5 /* Song.h */,
+				1870CB6E1CECA0AF00501BB5 /* Song.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		18A64C621CE8B8C900EFE8D7 /* Controller */ = {
@@ -120,6 +139,10 @@
 			children = (
 				18A64C641CE8B95500EFE8D7 /* TabBarItemButton.h */,
 				18A64C651CE8B95500EFE8D7 /* TabBarItemButton.m */,
+				1870CB701CECA30700501BB5 /* SongCollectionViewCell.h */,
+				1870CB711CECA30700501BB5 /* SongCollectionViewCell.m */,
+				18B354671CED8641006E898B /* ScoreLabel.h */,
+				18B354681CED8641006E898B /* ScoreLabel.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -197,9 +220,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1870CB721CECA30700501BB5 /* SongCollectionViewCell.m in Sources */,
+				1870CB6F1CECA0AF00501BB5 /* Song.m in Sources */,
 				18A64C661CE8B95500EFE8D7 /* TabBarItemButton.m in Sources */,
 				18A64C6F1CE8C82F00EFE8D7 /* MineViewController.m in Sources */,
 				18A64C6C1CE8C81E00EFE8D7 /* DiscoverViewController.m in Sources */,
+				18B354691CED8641006E898B /* ScoreLabel.m in Sources */,
 				1844D90E1CE43B2E00F6CADD /* AppDelegate.m in Sources */,
 				18A64C3E1CE8ACEB00EFE8D7 /* MainViewController.m in Sources */,
 				18A64C691CE8C7EB00EFE8D7 /* MusicHallViewController.m in Sources */,

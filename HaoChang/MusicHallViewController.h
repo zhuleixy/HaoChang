@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MusicHallViewController : UICollectionViewController
+@interface MusicHallViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 
 @end

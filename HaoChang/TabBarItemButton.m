@@ -39,16 +39,18 @@
 
 - (void)setHighlighted:(BOOL)highlighted
 {
-     [self.titleLabel setTextColor:[UIColor redColor]];
+    if (highlighted) {
+        [self setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    }
 }
 
 - (void)setSelected:(BOOL)selected
 {
     if (selected) {
-        [self.titleLabel setTextColor:[UIColor redColor]];
+        [self setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [self.bottomLine setHidden:NO];
     } else {
-        [self.titleLabel setTextColor:[UIColor darkTextColor]];
+        [self setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
         [self.bottomLine setHidden:YES];
     }
 }
