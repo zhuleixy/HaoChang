@@ -40,6 +40,8 @@
 - (void)initView
 {
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.delegate = self;
     [self addSubview:self.scrollView];
     _pageControl = [[UIPageControl alloc] initWithFrame:CGRectZero];
     [self.pageControl setCurrentPageIndicatorTintColor:[UIColor redColor]];
@@ -100,7 +102,18 @@
     self.totalPage = imageArray.count - 1;
     self.pageControl.numberOfPages = self.totalPage + 1;
     self.pageControl.currentPage = self.currentPage;
+    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.scrollView.bounds) *  imageArray.count, CGRectGetHeight(self.scrollView.bounds));
 }
+
+#pragma mark - UIScrollViewDelegate
+//同步pageControl红点
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    int currentPage = fabs(scrollView.contentOffset.x) / scrollView.frame.size.width;//当前是第几个视图
+    self.pageControl.currentPage = currentPage;
+}
+
+#pragma mark - Pravite
 
 - (void)switchBanner
 {
@@ -120,7 +133,8 @@
     CGPoint offset = self.scrollView.contentOffset;
     offset.x = offsetX;
     [self.scrollView setContentOffset:offset animated:YES];
-    self.pageControl.currentPage = self.currentPage;
 }
+
+
 
 @end

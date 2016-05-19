@@ -9,11 +9,13 @@
 #import "MusicHallViewController.h"
 #import "SongCollectionViewCell.h"
 #import "CollectionHeaderViewController.h"
+#import "Song.h"
 
 @interface MusicHallViewController ()
 
 @property (nonatomic, strong) IBOutlet UICollectionView *songCollectionView;
 @property (nonatomic, strong) CollectionHeaderViewController *headerViewController;
+@property (nonatomic, strong) NSMutableArray *songArray;
 
 @end
 
@@ -22,7 +24,24 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //造假数据
+    _songArray = [NSMutableArray arrayWithCapacity:13];
+    NSArray *names = @[@"Rollin王蓉", @"老徐👑", @"淡了流年", @"高音废物", @"象妈blair", @"🔥燃烧"];
+    NSArray *songNames = @[@"独角戏", @"好乐day", @"又见炊烟", @"梦田", @"走钢索人", @"燃烧"];
+    for (int i = 0; i < 13; i++)
+    {
+        Song *song = [[Song alloc] init];
+        song.songName = songNames[i % 6];
+        song.singerName = names[i % 6];
+        song.score = 800 + (i * 15);
+        NSString *imageName = [NSString stringWithFormat:@"albumArt%d", i % 5];
+        song.image = [UIImage imageNamed:imageName];
+        [self.songArray addObject:song];
+    }
+    
     [self initView];
+
 }
 
 - (void)initView
@@ -58,17 +77,19 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 13;
+    return self.songArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     static NSString * CellIdentifier = @"SongCell";
     SongCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-    cell.imageView.image = [UIImage imageNamed:@"albumArt3"];
-    cell.songNameLabel.text = @"凤凰传奇";
-    cell.singerNameLabel.text = @"苦逼程序员";
-    cell.scoreLabel.text = @"800分";
+    
+    Song *song = self.songArray[indexPath.row];
+    cell.imageView.image = song.image;
+    cell.songNameLabel.text = song.songName;
+    cell.singerNameLabel.text =song.singerName;
+    cell.scoreLabel.text = [NSString stringWithFormat:@"%d分", song.score];
     return cell;
 }
 

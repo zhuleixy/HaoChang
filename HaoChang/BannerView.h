@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BannerView : UIView
+@interface BannerView : UIView <UIScrollViewDelegate>
 
 - (void)setImageArray:(NSArray *)imageArray;
 
