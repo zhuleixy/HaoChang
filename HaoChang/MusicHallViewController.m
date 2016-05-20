@@ -88,8 +88,8 @@
     Song *song = self.songArray[indexPath.row];
     cell.imageView.image = song.image;
     cell.songNameLabel.text = song.songName;
-    cell.singerNameLabel.text = [NSString stringWithFormat:@"%d.%@", indexPath.row + 1, song.singerName];
-    cell.scoreLabel.text = [NSString stringWithFormat:@"%d分", song.score];
+    cell.singerNameLabel.text = [NSString stringWithFormat:@"%lu.%@", (indexPath.row + 1), song.singerName];
+    cell.scoreLabel.text = [NSString stringWithFormat:@"%lu分", song.score];
     return cell;
 }
 
@@ -108,7 +108,7 @@
 {
     if (indexPath.row == 0) {
         CGFloat width = CGRectGetWidth(collectionView.bounds);
-        return CGSizeMake(width, width * 400 / 720); //截图得到的比例
+        return CGSizeMake(width, width * 200 / 375); //截图得到的比例
     } else {
         CGFloat width = (CGRectGetWidth(collectionView.bounds) - 3) / 2;
         return CGSizeMake(width, width * 4 / 5);
