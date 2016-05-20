@@ -88,7 +88,7 @@
     Song *song = self.songArray[indexPath.row];
     cell.imageView.image = song.image;
     cell.songNameLabel.text = song.songName;
-    cell.singerNameLabel.text =song.singerName;
+    cell.singerNameLabel.text = [NSString stringWithFormat:@"%d.%@", indexPath.row, song.singerName];
     cell.scoreLabel.text = [NSString stringWithFormat:@"%d分", song.score];
     return cell;
 }

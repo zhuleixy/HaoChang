@@ -111,6 +111,7 @@
 {
     int currentPage = fabs(scrollView.contentOffset.x) / scrollView.frame.size.width;//当前是第几个视图
     self.pageControl.currentPage = currentPage;
+    self.currentPage = currentPage;
 }
 
 #pragma mark - Pravite

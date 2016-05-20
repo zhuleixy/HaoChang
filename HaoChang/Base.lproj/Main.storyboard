@@ -5,10 +5,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="9jb-Mq-8wi">
             <objects>
                 <navigationController id="GzO-vQ-DxC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="798-BW-Mtn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fr9-I1-e8Y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -19,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1E-gz-snB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1079" y="-1138"/>
+            <point key="canvasLocation" x="-1403" y="-1221"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="QRD-2Y-0kw">
@@ -77,10 +78,9 @@
                             </constraints>
                         </view>
                     </navigationItem>
-                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="qMV-Zh-zcw">
+                    <tabBar key="tabBar" hidden="YES" contentMode="scaleToFill" barStyle="black" id="qMV-Zh-zcw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <outlet property="musicHallBtn" destination="ehN-Yn-2Nd" id="K1a-ec-iTj"/>
@@ -88,7 +88,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yk8-g8-8lW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-700" y="-1138"/>
+            <point key="canvasLocation" x="-1003" y="-1233"/>
         </scene>
     </scenes>
 </document>

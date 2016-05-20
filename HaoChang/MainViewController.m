@@ -50,17 +50,10 @@
 
 - (void)initView
 {
-//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"homepage_record.png"]];
-//    [self.tabBar addSubview:imageView];
-//     UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selectSongs:)];
-//    [self.tabBar addGestureRecognizer:tapGesture];
     //选中乐馆
     [self.musicHallBtn setSelected:YES];
     [self onTabBarButtonClicked:self.musicHallBtn];
 }
-
-#pragma mark - Setter & Gatter
-
 
 
 #pragma mark - Action
@@ -111,7 +104,10 @@
 
 - (IBAction)selectSongs:(id)sender
 {
-    
+    [self setHidesBottomBarWhenPushed:NO];
+    UIViewController *VC = [[UIViewController alloc] init];
+    VC.view.backgroundColor = [UIColor whiteColor];
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 - (IBAction)showMessage:(id)sender

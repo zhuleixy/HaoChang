@@ -39,7 +39,7 @@
     //[self.bannerView setImageArray:imageArray];
     
     //添加分割线
-    CGFloat btnSpacing = CGRectGetWidth(self.btnContainerView.bounds) / 4;
+    CGFloat btnSpacing = CGRectGetWidth([UIScreen mainScreen].bounds) / 4;
     CGFloat splitLineHeight = 20;
     CGFloat splitLineFrameY = (CGRectGetHeight(self.btnContainerView.bounds) - splitLineHeight) / 2;
     for (int i = 0; i < 3; i++)
