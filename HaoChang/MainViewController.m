@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 #import "TabBarItemButton.h"
-
+#import "MacroDefinition.h"
 
 @interface MainViewController ()
 
@@ -55,6 +55,13 @@
     [self onTabBarButtonClicked:self.musicHallBtn];
 }
 
+- (void)viewWillLayoutSubviews
+{
+    CGRect tabFrame = self.tabBar.frame;
+    tabFrame.size.height = BOTTOM_BAR_HEIGHT;//改成与底栏高度相同，这样tabbar下的VC都不同再设置contentInset
+    tabFrame.origin.y = self.view.frame.size.height;
+    self.tabBar.frame = tabFrame;
+}
 
 #pragma mark - Action
 
@@ -108,6 +115,8 @@
     UIViewController *VC = [[UIViewController alloc] init];
     VC.view.backgroundColor = [UIColor whiteColor];
     [self.navigationController pushViewController:VC animated:YES];
+    
+    //[self presentViewController:VC animated:YES completion:nil];
 }
 
 - (IBAction)showMessage:(id)sender

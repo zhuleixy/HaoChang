@@ -7,16 +7,23 @@
 //
 
 #import "AppDelegate.h"
+#import "PlayControlViewController.h"
+#import "MacroDefinition.h"
 
 @interface AppDelegate ()
-
+@property (nonatomic, strong) UIWindow *bottomBarWindow;
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    PlayControlViewController *playControlVC = [[PlayControlViewController alloc] initWithNibName:@"PlayControlViewController" bundle:nil];
+    _bottomBarWindow = [[UIWindow alloc] initWithFrame:CGRectMake(0, KDeviceHeight - BOTTOM_BAR_HEIGHT, kDeviceWidth, BOTTOM_BAR_HEIGHT)];
+    self.bottomBarWindow.rootViewController = playControlVC;
+    self.bottomBarWindow.windowLevel = UIWindowLevelStatusBar;
+    self.bottomBarWindow.opaque = NO;
+    [self.bottomBarWindow makeKeyAndVisible];
     return YES;
 }
 

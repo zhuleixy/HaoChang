@@ -53,7 +53,7 @@
             forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                    withReuseIdentifier:@"HeaderView"];
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
-    
+
     //headView
     _headerViewController = [[CollectionHeaderViewController alloc] initWithNibName:@"CollectionHeaderViewController" bundle:nil];
     CGFloat width = CGRectGetWidth(self.view.bounds);
@@ -88,7 +88,7 @@
     Song *song = self.songArray[indexPath.row];
     cell.imageView.image = song.image;
     cell.songNameLabel.text = song.songName;
-    cell.singerNameLabel.text = [NSString stringWithFormat:@"%d.%@", indexPath.row, song.singerName];
+    cell.singerNameLabel.text = [NSString stringWithFormat:@"%d.%@", indexPath.row + 1, song.singerName];
     cell.scoreLabel.text = [NSString stringWithFormat:@"%d分", song.score];
     return cell;
 }
