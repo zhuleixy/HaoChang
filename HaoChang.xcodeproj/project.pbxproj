@@ -17,6 +17,9 @@
 		1865AFC91CE970D3005505C1 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1865AFC81CE970D3005505C1 /* Mine.storyboard */; };
 		1870CB6F1CECA0AF00501BB5 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 1870CB6E1CECA0AF00501BB5 /* Song.m */; };
 		1870CB721CECA30700501BB5 /* SongCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1870CB711CECA30700501BB5 /* SongCollectionViewCell.m */; };
+		1874F60F1CEF96B7002E7154 /* HCPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874F60E1CEF96B7002E7154 /* HCPlayer.m */; };
+		1874F6131CF00FBF002E7154 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1874F6121CF00FBF002E7154 /* AVFoundation.framework */; };
+		1874F6161CF05B20002E7154 /* ResourceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874F6151CF05B20002E7154 /* ResourceProvider.m */; };
 		189615341CEF3DD100B5B501 /* PlayControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189615321CEF3DD100B5B501 /* PlayControlViewController.m */; };
 		189615351CEF3DD100B5B501 /* PlayControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189615331CEF3DD100B5B501 /* PlayControlViewController.xib */; };
 		18A64C3E1CE8ACEB00EFE8D7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C3D1CE8ACEB00EFE8D7 /* MainViewController.m */; };
@@ -46,6 +49,11 @@
 		1870CB6E1CECA0AF00501BB5 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		1870CB701CECA30700501BB5 /* SongCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongCollectionViewCell.h; sourceTree = "<group>"; };
 		1870CB711CECA30700501BB5 /* SongCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongCollectionViewCell.m; sourceTree = "<group>"; };
+		1874F60D1CEF96B7002E7154 /* HCPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCPlayer.h; sourceTree = "<group>"; };
+		1874F60E1CEF96B7002E7154 /* HCPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCPlayer.m; sourceTree = "<group>"; };
+		1874F6121CF00FBF002E7154 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1874F6141CF05B20002E7154 /* ResourceProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceProvider.h; sourceTree = "<group>"; };
+		1874F6151CF05B20002E7154 /* ResourceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceProvider.m; sourceTree = "<group>"; };
 		189615311CEF3DD100B5B501 /* PlayControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayControlViewController.h; sourceTree = "<group>"; };
 		189615321CEF3DD100B5B501 /* PlayControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayControlViewController.m; sourceTree = "<group>"; };
 		189615331CEF3DD100B5B501 /* PlayControlViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayControlViewController.xib; sourceTree = "<group>"; };
@@ -74,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1874F6131CF00FBF002E7154 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				1844D9081CE43B2E00F6CADD /* HaoChang */,
+				1874F6171CF071EA002E7154 /* Frameworks */,
 				1844D9071CE43B2D00F6CADD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,6 +115,7 @@
 				18A64C621CE8B8C900EFE8D7 /* Controller */,
 				18A64C631CE8B8DC00EFE8D7 /* View */,
 				1870CB6C1CECA05D00501BB5 /* Model */,
+				1874F60C1CEF96A3002E7154 /* Player */,
 				1844D9151CE43B2E00F6CADD /* Assets.xcassets */,
 				1844D9171CE43B2E00F6CADD /* LaunchScreen.storyboard */,
 				1844D91A1CE43B2E00F6CADD /* Info.plist */,
@@ -128,6 +139,25 @@
 				1870CB6E1CECA0AF00501BB5 /* Song.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		1874F60C1CEF96A3002E7154 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				1874F60D1CEF96B7002E7154 /* HCPlayer.h */,
+				1874F60E1CEF96B7002E7154 /* HCPlayer.m */,
+				1874F6141CF05B20002E7154 /* ResourceProvider.h */,
+				1874F6151CF05B20002E7154 /* ResourceProvider.m */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
+		1874F6171CF071EA002E7154 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1874F6121CF00FBF002E7154 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		18A64C621CE8B8C900EFE8D7 /* Controller */ = {
@@ -251,9 +281,11 @@
 				18A64C6F1CE8C82F00EFE8D7 /* MineViewController.m in Sources */,
 				18B3546C1CED8FB1006E898B /* BannerView.m in Sources */,
 				189615341CEF3DD100B5B501 /* PlayControlViewController.m in Sources */,
+				1874F6161CF05B20002E7154 /* ResourceProvider.m in Sources */,
 				18A64C6C1CE8C81E00EFE8D7 /* DiscoverViewController.m in Sources */,
 				18B354821CEDA654006E898B /* CollectionHeaderViewController.m in Sources */,
 				18B354691CED8641006E898B /* ScoreLabel.m in Sources */,
+				1874F60F1CEF96B7002E7154 /* HCPlayer.m in Sources */,
 				1844D90E1CE43B2E00F6CADD /* AppDelegate.m in Sources */,
 				18A64C3E1CE8ACEB00EFE8D7 /* MainViewController.m in Sources */,
 				18A64C691CE8C7EB00EFE8D7 /* MusicHallViewController.m in Sources */,

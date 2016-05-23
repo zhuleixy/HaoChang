@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "TabBarItemButton.h"
 #import "MacroDefinition.h"
+#import "HCPlayer.h"
 
 @interface MainViewController ()
 
@@ -111,16 +112,17 @@
 
 - (IBAction)selectSongs:(id)sender
 {
+    NSURL *songURL = [NSURL URLWithString:@"http://sc1.111ttt.com/2016/5/02/25/195251254501.mp3"];
+    [[HCPlayer sharedInstance] playWithURL:songURL];
+}
+
+- (IBAction)showMessage:(id)sender
+{
     [self setHidesBottomBarWhenPushed:NO];
     UIViewController *VC = [[UIViewController alloc] init];
     VC.view.backgroundColor = [UIColor whiteColor];
     [self.navigationController pushViewController:VC animated:YES];
     
     //[self presentViewController:VC animated:YES completion:nil];
-}
-
-- (IBAction)showMessage:(id)sender
-{
-    
 }
 @end
