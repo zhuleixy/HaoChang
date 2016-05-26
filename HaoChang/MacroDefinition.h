@@ -16,5 +16,6 @@
 #define kDeviceWidth [UIScreen mainScreen].bounds.size.width
 #define KDeviceHeight [UIScreen mainScreen].bounds.size.height
 
+#define kNotificationNamePlaySong @"kNotificationNamePlaySong"
 
 #endif /* MacroDefinition_h */

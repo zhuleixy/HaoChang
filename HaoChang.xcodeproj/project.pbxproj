@@ -12,6 +12,8 @@
 		1844D9141CE43B2E00F6CADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1844D9121CE43B2E00F6CADD /* Main.storyboard */; };
 		1844D9161CE43B2E00F6CADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1844D9151CE43B2E00F6CADD /* Assets.xcassets */; };
 		1844D9191CE43B2E00F6CADD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1844D9171CE43B2E00F6CADD /* LaunchScreen.storyboard */; };
+		1863160F1CF7292D00DF5DAD /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863160D1CF7292D00DF5DAD /* PlayerViewController.m */; };
+		186316101CF7292D00DF5DAD /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1863160E1CF7292D00DF5DAD /* PlayerViewController.xib */; };
 		1865AFC31CE96022005505C1 /* MusicHall.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1865AFC21CE96022005505C1 /* MusicHall.storyboard */; };
 		1865AFC51CE970B9005505C1 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1865AFC41CE970B9005505C1 /* Discover.storyboard */; };
 		1865AFC91CE970D3005505C1 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1865AFC81CE970D3005505C1 /* Mine.storyboard */; };
@@ -42,6 +44,9 @@
 		1844D9151CE43B2E00F6CADD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1844D9181CE43B2E00F6CADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1844D91A1CE43B2E00F6CADD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1863160C1CF7292D00DF5DAD /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
+		1863160D1CF7292D00DF5DAD /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
+		1863160E1CF7292D00DF5DAD /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		1865AFC21CE96022005505C1 /* MusicHall.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MusicHall.storyboard; sourceTree = "<group>"; };
 		1865AFC41CE970B9005505C1 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		1865AFC81CE970D3005505C1 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
@@ -181,6 +186,9 @@
 				189615311CEF3DD100B5B501 /* PlayControlViewController.h */,
 				189615321CEF3DD100B5B501 /* PlayControlViewController.m */,
 				189615331CEF3DD100B5B501 /* PlayControlViewController.xib */,
+				1863160C1CF7292D00DF5DAD /* PlayerViewController.h */,
+				1863160D1CF7292D00DF5DAD /* PlayerViewController.m */,
+				1863160E1CF7292D00DF5DAD /* PlayerViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -259,6 +267,7 @@
 			files = (
 				1844D9191CE43B2E00F6CADD /* LaunchScreen.storyboard in Resources */,
 				1865AFC31CE96022005505C1 /* MusicHall.storyboard in Resources */,
+				186316101CF7292D00DF5DAD /* PlayerViewController.xib in Resources */,
 				1865AFC51CE970B9005505C1 /* Discover.storyboard in Resources */,
 				1865AFC91CE970D3005505C1 /* Mine.storyboard in Resources */,
 				189615351CEF3DD100B5B501 /* PlayControlViewController.xib in Resources */,
@@ -288,6 +297,7 @@
 				1874F60F1CEF96B7002E7154 /* HCPlayer.m in Sources */,
 				1844D90E1CE43B2E00F6CADD /* AppDelegate.m in Sources */,
 				18A64C3E1CE8ACEB00EFE8D7 /* MainViewController.m in Sources */,
+				1863160F1CF7292D00DF5DAD /* PlayerViewController.m in Sources */,
 				18A64C691CE8C7EB00EFE8D7 /* MusicHallViewController.m in Sources */,
 				1844D90B1CE43B2E00F6CADD /* main.m in Sources */,
 			);

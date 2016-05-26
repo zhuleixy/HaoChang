@@ -7,6 +7,8 @@
 //
 
 #import "MainViewController.h"
+#import "PlayerViewController.h"
+#import "PlayControlViewController.h"
 #import "TabBarItemButton.h"
 #import "MacroDefinition.h"
 #import "HCPlayer.h"
@@ -16,6 +18,8 @@
 @property (nonatomic, strong) UIViewController *musicHallInitialVC;
 @property (nonatomic, strong) UIViewController *discoverInitialVC;
 @property (nonatomic, strong) UIViewController *mineInitialVC;
+@property (nonatomic, strong) PlayerViewController *playerVC;
+@property (nonatomic, strong) PlayControlViewController *playControlVC;
 @property (nonatomic, strong) TabBarItemButton *currentSelectedButton;
 @property (weak, nonatomic) IBOutlet TabBarItemButton *musicHallBtn;
 
@@ -27,6 +31,8 @@
 {
     [self initNavigationBarItem];
     [self initView];
+    [self initBottomBarWindow];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playSong:) name:kNotificationNamePlaySong object:nil];
 }
 
 - (void)initNavigationBarItem
@@ -54,6 +60,15 @@
     //选中乐馆
     [self.musicHallBtn setSelected:YES];
     [self onTabBarButtonClicked:self.musicHallBtn];
+}
+
+- (void)initBottomBarWindow
+{
+    //底部控制栏窗口
+    _playControlVC = [[PlayControlViewController alloc] initWithNibName:@"PlayControlViewController" bundle:nil];
+    self.playControlVC.view.frame = CGRectMake(0, KDeviceHeight - BOTTOM_BAR_HEIGHT, kDeviceWidth, BOTTOM_BAR_HEIGHT);
+    //置顶
+    [[[UIApplication sharedApplication] keyWindow] addSubview:self.playControlVC.view];
 }
 
 - (void)viewWillLayoutSubviews
@@ -125,4 +140,26 @@
     
     //[self presentViewController:VC animated:YES completion:nil];
 }
+
+#pragma mark - Private
+
+- (void)playSong:(NSNotification *)Notif
+{
+    if (!self.playerVC) {
+        _playerVC = [[PlayerViewController alloc] initWithNibName:@"PlayerViewController" bundle:nil];
+        __weak typeof(self) weakSelf = self;
+        self.playerVC.willCloseBlock = ^(){
+            //为了让控制栏看上去是在playerVC下面，先取消置顶
+            [weakSelf.view addSubview:weakSelf.playControlVC.view];
+            [weakSelf.playControlVC.view setHidden:NO];
+        };
+        self.playerVC.didCloseBlock = ^(){
+            [[[UIApplication sharedApplication] keyWindow] addSubview:weakSelf.playControlVC.view];
+        };
+    }
+    [self.playControlVC.view setHidden:YES];
+    [self presentViewController:self.playerVC animated:YES completion:nil];
+    
+}
+
 @end

@@ -10,6 +10,7 @@
 #import "SongCollectionViewCell.h"
 #import "CollectionHeaderViewController.h"
 #import "Song.h"
+#import "MacroDefinition.h"
 
 @interface MusicHallViewController ()
 
@@ -135,6 +136,9 @@
 
 #pragma mark - UICollectionViewDelegate
 
-
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationNamePlaySong object:nil];
+}
 
 @end
