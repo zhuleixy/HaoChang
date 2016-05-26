@@ -30,12 +30,19 @@
 
 - (BOOL)resourceLoader:(AVAssetResourceLoader *)resourceLoader shouldWaitForLoadingOfRequestedResource:(AVAssetResourceLoadingRequest *)loadingRequest
 {
-    if (self.connection) {
-        [self respondPendingRequest];
+    if (!self.connection) {
+        //发起请求
+        [self sendRequest:loadingRequest];
     }
-    [self.pendingRequests addObject:loadingRequest];
-    [self requestData:loadingRequest];
-    
+    //如果本地已收到数据，试试已有数据能不能满足这次请求
+    if (self.receivedData.length > 0) {
+        //如果已有数据不能完全满足请求，则加入到待处理队列
+        if (![self respondRequest:loadingRequest.dataRequest]) {
+            [self.pendingRequests addObject:loadingRequest];
+        }
+    } else {
+        [self.pendingRequests addObject:loadingRequest];
+    }
     return YES;
 }
 
@@ -53,9 +60,9 @@
     NSDictionary *dic = (NSDictionary *)[httpResponse allHeaderFields];
     NSString *content = [dic valueForKey:@"Content-Range"];
     NSArray *array = [content componentsSeparatedByString:@"/"];
-    NSInteger dataLength = [array.lastObject integerValue];
-    if (dataLength == 0) {
-        dataLength = (NSUInteger)httpResponse.expectedContentLength;
+    self.dataLength = [array.lastObject integerValue];
+    if (self.dataLength == 0) {
+        self.dataLength = (NSUInteger)httpResponse.expectedContentLength;
     }
     //将信息填入请求中，模拟服务器回复
     for (AVAssetResourceLoadingRequest *loadingRequest in self.pendingRequests)
@@ -66,7 +73,8 @@
             CFStringRef contentType = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)(sourceType), NULL);
             informationRequest.byteRangeAccessSupported = YES;
             informationRequest.contentType = CFBridgingRelease(contentType);
-            informationRequest.contentLength = dataLength;
+            informationRequest.contentLength = self.dataLength;
+            break;
         }
     }
 }
@@ -77,16 +85,13 @@
         self.receivedData = [NSMutableData data];
     }
     [self.receivedData appendData:data];
-    NSLog(@"开始处理请求（from新数据）");
-    [self respondPendingRequest];
-    
+    [self processPendingRequests];
 }
 
 #pragma mark - Private
 
-- (void)requestData:(AVAssetResourceLoadingRequest *)loadingRequest
+- (void)sendRequest:(AVAssetResourceLoadingRequest *)loadingRequest
 {
-    
     if (self.connection)
         return;
     NSURL *requestURL = [loadingRequest.request URL];
@@ -102,15 +107,13 @@
     [self.connection start];
 }
 
-- (BOOL)respondPendingRequest
+- (BOOL)processPendingRequests
 {
     NSMutableArray *completeRequest = [NSMutableArray array];
     for (AVAssetResourceLoadingRequest *loadingRequest in self.pendingRequests)
     {
-  
-        BOOL isComplete = [self respondWithDataForRequest:loadingRequest.dataRequest];
+        BOOL isComplete = [self respondRequest:loadingRequest.dataRequest];
         if (isComplete) {
-            NSLog(@"完成请求：%@", loadingRequest);
             [completeRequest addObject:loadingRequest];
             [loadingRequest finishLoading];
         }
@@ -119,36 +122,26 @@
     return YES;
 }
 
-- (BOOL)respondWithDataForRequest:(AVAssetResourceLoadingDataRequest *)dataRequest
+/*
+ *  currentOffset与requestedOffset的区别
+ *  假定数据总长度100，某个请求的requestedOffset为20，currentOffset为30，requestedLength为50
+ *  则本此请求起始位置为20，请求的数据长度为50，先前已通过respondWithData返回了长度为10的数据，因此currentOffset为20＋10＝30
+ */
+- (BOOL)respondRequest:(AVAssetResourceLoadingDataRequest *)dataRequest
 {
-    long long startOffset = dataRequest.requestedOffset;
-    startOffset = dataRequest.currentOffset;
-    if (startOffset == 0) {
-        startOffset = dataRequest.requestedOffset;
+    long long offset = dataRequest.currentOffset;//可能之前已经返回部分数据，所以要用currentOffset
+    if (dataRequest.currentOffset == 0) {
+        offset = dataRequest.requestedOffset;
     }
-    if ((0 +self.receivedData.length) < startOffset)
-    {
-        //NSLog(@"NO DATA FOR REQUEST");
+    if (offset < 0 || offset > self.receivedData.length) {
         return NO;
     }
     
-    if (startOffset < 0) {
-        return NO;
-    }
-    NSUInteger unreadBytes = self.receivedData.length - ((NSInteger)startOffset);
-    
-    // Respond with whatever is available if we can't satisfy the request fully yet
+    NSUInteger unreadBytes = self.receivedData.length - ((NSInteger)offset);
     NSUInteger numberOfBytesToRespondWith = MIN((NSUInteger)dataRequest.requestedLength, unreadBytes);
-    
-    NSData *respondData = [self.receivedData subdataWithRange:NSMakeRange((NSUInteger)startOffset, (NSUInteger)numberOfBytesToRespondWith)];
+    NSData *respondData = [self.receivedData subdataWithRange:NSMakeRange((NSUInteger)offset, (NSUInteger)numberOfBytesToRespondWith)];
     [dataRequest respondWithData:respondData];
-    
-    long long endOffset = startOffset + dataRequest.requestedLength;
-    BOOL didRespondFully = (0 + self.receivedData.length) >= endOffset;
-    
-    return didRespondFully;
-    
+    return dataRequest.currentOffset == dataRequest.requestedOffset + dataRequest.requestedLength;
 }
-
 
 @end
