@@ -30,9 +30,7 @@
 
 - (BOOL)resourceLoader:(AVAssetResourceLoader *)resourceLoader shouldWaitForLoadingOfRequestedResource:(AVAssetResourceLoadingRequest *)loadingRequest
 {
-     NSLog(@"新请求:%@", loadingRequest);
     if (self.connection) {
-        NSLog(@"开始处理请求（from新请求）");
         [self respondPendingRequest];
     }
     [self.pendingRequests addObject:loadingRequest];
@@ -43,7 +41,6 @@
 
 - (void)resourceLoader:(AVAssetResourceLoader *)resourceLoader didCancelLoadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest
 {
-    NSLog(@"取消请求:%@", loadingRequest);
     [self.pendingRequests removeObject:loadingRequest];
 }
 
@@ -51,31 +48,38 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    NSLog(@"------>didReceiveResponse");
-
+    //获取音频信息
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
     NSDictionary *dic = (NSDictionary *)[httpResponse allHeaderFields];
     NSString *content = [dic valueForKey:@"Content-Range"];
     NSArray *array = [content componentsSeparatedByString:@"/"];
-    NSString *length = array.lastObject;
-
-    if ([length integerValue] == 0) {
-        self.dataLength = (NSUInteger)httpResponse.expectedContentLength;
-    } else {
-        self.dataLength = [length integerValue];
+    NSInteger dataLength = [array.lastObject integerValue];
+    if (dataLength == 0) {
+        dataLength = (NSUInteger)httpResponse.expectedContentLength;
+    }
+    //将信息填入请求中，模拟服务器回复
+    for (AVAssetResourceLoadingRequest *loadingRequest in self.pendingRequests)
+    {
+        AVAssetResourceLoadingContentInformationRequest *informationRequest = loadingRequest.contentInformationRequest;
+        if (informationRequest) {
+            NSString *sourceType = @"audio/mpeg";
+            CFStringRef contentType = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)(sourceType), NULL);
+            informationRequest.byteRangeAccessSupported = YES;
+            informationRequest.contentType = CFBridgingRelease(contentType);
+            informationRequest.contentLength = dataLength;
+        }
     }
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    NSLog(@"------>didReceiveData");
     if (!self.receivedData) {
         self.receivedData = [NSMutableData data];
     }
     [self.receivedData appendData:data];
     NSLog(@"开始处理请求（from新数据）");
     [self respondPendingRequest];
-
+    
 }
 
 #pragma mark - Private
@@ -90,7 +94,7 @@
     components.scheme = @"http";
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[components URL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:20.0];
     
-   // [request addValue:[NSString stringWithFormat:@"bytes=%ld-%ld",(unsigned long)0, (unsigned long)self.dataLength - 1] forHTTPHeaderField:@"Range"];
+    // [request addValue:[NSString stringWithFormat:@"bytes=%ld-%ld",(unsigned long)0, (unsigned long)self.dataLength - 1] forHTTPHeaderField:@"Range"];
     
     [self.connection cancel];
     self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
@@ -103,10 +107,10 @@
     NSMutableArray *completeRequest = [NSMutableArray array];
     for (AVAssetResourceLoadingRequest *loadingRequest in self.pendingRequests)
     {
-        [self fillInContentInformation:loadingRequest.contentInformationRequest]; //对每次请求加上长度，文件类型等信息
+  
         BOOL isComplete = [self respondWithDataForRequest:loadingRequest.dataRequest];
         if (isComplete) {
-             NSLog(@"完成请求：%@", loadingRequest);
+            NSLog(@"完成请求：%@", loadingRequest);
             [completeRequest addObject:loadingRequest];
             [loadingRequest finishLoading];
         }
@@ -143,17 +147,8 @@
     BOOL didRespondFully = (0 + self.receivedData.length) >= endOffset;
     
     return didRespondFully;
-
-    }
-
-- (void)fillInContentInformation:(AVAssetResourceLoadingContentInformationRequest *)contentInformationRequest
-{
-    NSString *mimeType = @"video/mp4";
-    CFStringRef contentType = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)(mimeType), NULL);
-    contentInformationRequest.byteRangeAccessSupported = YES;
-    contentInformationRequest.contentType = CFBridgingRelease(contentType);
-    contentInformationRequest.contentLength = self.dataLength;
     
 }
+
 
 @end

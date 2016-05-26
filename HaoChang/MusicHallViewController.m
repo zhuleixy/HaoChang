@@ -88,8 +88,8 @@
     Song *song = self.songArray[indexPath.row];
     cell.imageView.image = song.image;
     cell.songNameLabel.text = song.songName;
-    cell.singerNameLabel.text = [NSString stringWithFormat:@"%lu.%@", (indexPath.row + 1), song.singerName];
-    cell.scoreLabel.text = [NSString stringWithFormat:@"%lu分", song.score];
+    cell.singerNameLabel.text = [NSString stringWithFormat:@"%d.%@", (indexPath.row + 1), song.singerName];
+    cell.scoreLabel.text = [NSString stringWithFormat:@"%d分", song.score];
     return cell;
 }
 
