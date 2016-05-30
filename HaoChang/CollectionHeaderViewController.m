@@ -46,7 +46,7 @@
     {
         CALayer *splitLine = [[CALayer alloc] init];
         splitLine.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1].CGColor;
-        splitLine.frame = CGRectMake(btnSpacing * (i + 1), splitLineFrameY, 1, splitLineHeight);
+        splitLine.frame = CGRectMake(btnSpacing * (i + 1), splitLineFrameY, 0.5, splitLineHeight);
         [self.btnContainerView.layer addSublayer:splitLine];
     }
 }

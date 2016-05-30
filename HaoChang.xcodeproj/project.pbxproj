@@ -22,6 +22,7 @@
 		1874F60F1CEF96B7002E7154 /* HCPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874F60E1CEF96B7002E7154 /* HCPlayer.m */; };
 		1874F6131CF00FBF002E7154 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1874F6121CF00FBF002E7154 /* AVFoundation.framework */; };
 		1874F6161CF05B20002E7154 /* ResourceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874F6151CF05B20002E7154 /* ResourceProvider.m */; };
+		1885D5791CFC19DF004996BE /* ThickSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885D5781CFC19DF004996BE /* ThickSlider.m */; };
 		189615341CEF3DD100B5B501 /* PlayControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189615321CEF3DD100B5B501 /* PlayControlViewController.m */; };
 		189615351CEF3DD100B5B501 /* PlayControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189615331CEF3DD100B5B501 /* PlayControlViewController.xib */; };
 		18A64C3E1CE8ACEB00EFE8D7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C3D1CE8ACEB00EFE8D7 /* MainViewController.m */; };
@@ -59,6 +60,8 @@
 		1874F6121CF00FBF002E7154 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1874F6141CF05B20002E7154 /* ResourceProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceProvider.h; sourceTree = "<group>"; };
 		1874F6151CF05B20002E7154 /* ResourceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceProvider.m; sourceTree = "<group>"; };
+		1885D5771CFC19DF004996BE /* ThickSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThickSlider.h; sourceTree = "<group>"; };
+		1885D5781CFC19DF004996BE /* ThickSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThickSlider.m; sourceTree = "<group>"; };
 		189615311CEF3DD100B5B501 /* PlayControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayControlViewController.h; sourceTree = "<group>"; };
 		189615321CEF3DD100B5B501 /* PlayControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayControlViewController.m; sourceTree = "<group>"; };
 		189615331CEF3DD100B5B501 /* PlayControlViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayControlViewController.xib; sourceTree = "<group>"; };
@@ -204,6 +207,8 @@
 				18B354681CED8641006E898B /* ScoreLabel.m */,
 				18B3546A1CED8FB1006E898B /* BannerView.h */,
 				18B3546B1CED8FB1006E898B /* BannerView.m */,
+				1885D5771CFC19DF004996BE /* ThickSlider.h */,
+				1885D5781CFC19DF004996BE /* ThickSlider.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				18A64C6F1CE8C82F00EFE8D7 /* MineViewController.m in Sources */,
 				18B3546C1CED8FB1006E898B /* BannerView.m in Sources */,
 				189615341CEF3DD100B5B501 /* PlayControlViewController.m in Sources */,
+				1885D5791CFC19DF004996BE /* ThickSlider.m in Sources */,
 				1874F6161CF05B20002E7154 /* ResourceProvider.m in Sources */,
 				18A64C6C1CE8C81E00EFE8D7 /* DiscoverViewController.m in Sources */,
 				18B354821CEDA654006E898B /* CollectionHeaderViewController.m in Sources */,
@@ -414,7 +420,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HaoChang/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hualeisoft.HaoChang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -427,7 +433,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HaoChang/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hualeisoft.HaoChang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
