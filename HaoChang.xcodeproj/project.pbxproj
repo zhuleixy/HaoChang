@@ -202,12 +202,12 @@
 				18B3547F1CEDA654006E898B /* CollectionHeaderViewController.h */,
 				18B354801CEDA654006E898B /* CollectionHeaderViewController.m */,
 				18B354811CEDA654006E898B /* CollectionHeaderViewController.xib */,
-				189615311CEF3DD100B5B501 /* PlayControlViewController.h */,
-				189615321CEF3DD100B5B501 /* PlayControlViewController.m */,
-				189615331CEF3DD100B5B501 /* PlayControlViewController.xib */,
 				1863160C1CF7292D00DF5DAD /* PlayerViewController.h */,
 				1863160D1CF7292D00DF5DAD /* PlayerViewController.m */,
 				1863160E1CF7292D00DF5DAD /* PlayerViewController.xib */,
+				189615311CEF3DD100B5B501 /* PlayControlViewController.h */,
+				189615321CEF3DD100B5B501 /* PlayControlViewController.m */,
+				189615331CEF3DD100B5B501 /* PlayControlViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

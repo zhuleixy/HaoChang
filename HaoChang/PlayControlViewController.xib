@@ -8,6 +8,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayControlViewController">
             <connections>
                 <outlet property="coverImageView" destination="28f-R9-UXl" id="Lql-0C-sfD"/>
+                <outlet property="playBtn" destination="BiJ-gn-meL" id="OcI-PS-C3i"/>
+                <outlet property="slider" destination="uhI-kS-8z8" id="JyX-bo-174"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -47,6 +49,9 @@
                                     <constraint firstAttribute="width" constant="46" id="MhH-QT-iSc"/>
                                 </constraints>
                                 <state key="normal" image="player_list"/>
+                                <connections>
+                                    <action selector="list:" destination="-1" eventType="touchUpInside" id="Pfv-gh-bb7"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiJ-gn-meL">
                                 <rect key="frame" x="381" y="0.0" width="45" height="60"/>
@@ -54,6 +59,9 @@
                                     <constraint firstAttribute="width" constant="45" id="UgP-9v-YYm"/>
                                 </constraints>
                                 <state key="normal" image="player_play"/>
+                                <connections>
+                                    <action selector="play:" destination="-1" eventType="touchUpInside" id="oiJ-CA-u05"/>
+                                </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="uhI-kS-8z8" customClass="playControlBarSlider">
                                 <rect key="frame" x="-2" y="30" width="484" height="31"/>
