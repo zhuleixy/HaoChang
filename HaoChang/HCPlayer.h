@@ -10,8 +10,16 @@
 
 @interface HCPlayer : NSObject
 
+@property (nonatomic, assign) NSTimeInterval duration;
+@property (nonatomic, assign) NSTimeInterval currentTime;
+
 + (instancetype)sharedInstance;
 
-- (void)playWithURL:(NSURL *)songURL;
+- (void)setSongURL:(NSURL *)songURL;
+- (NSURL*)currentSongURL;
+- (void)play;
+- (void)pause;
+
+- (BOOL)isPlaying;
 
 @end

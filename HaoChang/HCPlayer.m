@@ -15,6 +15,8 @@
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) AVPlayerItem *currentPlayerItem;
 @property (nonatomic, strong) ResourceProvider *resourceProvider;
+@property (nonatomic, strong) id playbackTimeObserver;
+@property (nonatomic, strong) NSURL *resourceURL;
 @end
 
 @implementation HCPlayer
@@ -29,8 +31,25 @@
     return sharedHCPlayerInstance;
 }
 
-- (void)playWithURL:(NSURL *)songURL
+- (void)dealloc
 {
+    [self.currentPlayerItem removeObserver:self forKeyPath:@"status"];
+    [self.player removeTimeObserver:self.playbackTimeObserver];
+    self.playbackTimeObserver = nil;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"status"]) {
+        if ([self.currentPlayerItem status] == AVPlayerStatusReadyToPlay) {
+            [self updateInfo:self.currentPlayerItem];
+        }
+    }
+}
+
+- (void)setSongURL:(NSURL *)songURL;
+{
+    self.resourceURL = songURL;
     NSURLComponents *components = [[NSURLComponents alloc] initWithURL:songURL resolvingAgainstBaseURL:NO];
     components.scheme = @"streaming";
     NSURL *playUrl = [components URL];
@@ -45,9 +64,43 @@
     } else {
         [self.player replaceCurrentItemWithPlayerItem:self.currentPlayerItem];
     }
-    
-    [self.player play];
+    [self.currentPlayerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+}
 
+- (NSURL*)currentSongURL
+{
+    return self.resourceURL;
+}
+
+- (BOOL)isPlaying
+{
+    return self.player.rate != 0.f;
+}
+
+- (void)play
+{
+    [self.player play];
+}
+
+- (void)pause
+{
+    [self.player pause];
+}
+
+- (void)updateInfo:(AVPlayerItem *)playerItem
+{
+    self.duration = CMTimeGetSeconds([self.currentPlayerItem duration]);
+    __weak typeof(self)weakSelf = self;
+    self.playbackTimeObserver = [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 2)
+                                                                          queue:NULL
+                                                                     usingBlock:^(CMTime time) {
+        [weakSelf updateCurrentTime:CMTimeGetSeconds([weakSelf.currentPlayerItem currentTime])];
+    }];
+}
+
+- (void)updateCurrentTime:(NSTimeInterval)currentTime
+{
+    [self setValue:@(currentTime) forKey:@"currentTime"];
 }
 
 @end
