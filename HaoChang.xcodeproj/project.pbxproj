@@ -22,7 +22,9 @@
 		1874F60F1CEF96B7002E7154 /* HCPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874F60E1CEF96B7002E7154 /* HCPlayer.m */; };
 		1874F6131CF00FBF002E7154 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1874F6121CF00FBF002E7154 /* AVFoundation.framework */; };
 		1874F6161CF05B20002E7154 /* ResourceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874F6151CF05B20002E7154 /* ResourceProvider.m */; };
-		1885D5791CFC19DF004996BE /* ThickSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885D5781CFC19DF004996BE /* ThickSlider.m */; };
+		1885D5811CFDD5FF004996BE /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885D5801CFDD5FF004996BE /* UIImage+RoundedCorner.m */; };
+		1885D5901CFDDF27004996BE /* ThickSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885D58F1CFDDF27004996BE /* ThickSlider.m */; };
+		1885D5931CFDDF6B004996BE /* playControlBarSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885D5921CFDDF6B004996BE /* playControlBarSlider.m */; };
 		189615341CEF3DD100B5B501 /* PlayControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189615321CEF3DD100B5B501 /* PlayControlViewController.m */; };
 		189615351CEF3DD100B5B501 /* PlayControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189615331CEF3DD100B5B501 /* PlayControlViewController.xib */; };
 		18A64C3E1CE8ACEB00EFE8D7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A64C3D1CE8ACEB00EFE8D7 /* MainViewController.m */; };
@@ -60,8 +62,12 @@
 		1874F6121CF00FBF002E7154 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1874F6141CF05B20002E7154 /* ResourceProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceProvider.h; sourceTree = "<group>"; };
 		1874F6151CF05B20002E7154 /* ResourceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceProvider.m; sourceTree = "<group>"; };
-		1885D5771CFC19DF004996BE /* ThickSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThickSlider.h; sourceTree = "<group>"; };
-		1885D5781CFC19DF004996BE /* ThickSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThickSlider.m; sourceTree = "<group>"; };
+		1885D57F1CFDD5FF004996BE /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		1885D5801CFDD5FF004996BE /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+		1885D58E1CFDDF27004996BE /* ThickSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThickSlider.h; sourceTree = "<group>"; };
+		1885D58F1CFDDF27004996BE /* ThickSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThickSlider.m; sourceTree = "<group>"; };
+		1885D5911CFDDF6B004996BE /* playControlBarSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playControlBarSlider.h; sourceTree = "<group>"; };
+		1885D5921CFDDF6B004996BE /* playControlBarSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = playControlBarSlider.m; sourceTree = "<group>"; };
 		189615311CEF3DD100B5B501 /* PlayControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayControlViewController.h; sourceTree = "<group>"; };
 		189615321CEF3DD100B5B501 /* PlayControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayControlViewController.m; sourceTree = "<group>"; };
 		189615331CEF3DD100B5B501 /* PlayControlViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayControlViewController.xib; sourceTree = "<group>"; };
@@ -124,6 +130,7 @@
 				18A64C631CE8B8DC00EFE8D7 /* View */,
 				1870CB6C1CECA05D00501BB5 /* Model */,
 				1874F60C1CEF96A3002E7154 /* Player */,
+				1885D57E1CFDD5B7004996BE /* Category */,
 				1844D9151CE43B2E00F6CADD /* Assets.xcassets */,
 				1844D9171CE43B2E00F6CADD /* LaunchScreen.storyboard */,
 				1844D91A1CE43B2E00F6CADD /* Info.plist */,
@@ -168,6 +175,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1885D57E1CFDD5B7004996BE /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				1885D57F1CFDD5FF004996BE /* UIImage+RoundedCorner.h */,
+				1885D5801CFDD5FF004996BE /* UIImage+RoundedCorner.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
 		18A64C621CE8B8C900EFE8D7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,8 +223,10 @@
 				18B354681CED8641006E898B /* ScoreLabel.m */,
 				18B3546A1CED8FB1006E898B /* BannerView.h */,
 				18B3546B1CED8FB1006E898B /* BannerView.m */,
-				1885D5771CFC19DF004996BE /* ThickSlider.h */,
-				1885D5781CFC19DF004996BE /* ThickSlider.m */,
+				1885D58E1CFDDF27004996BE /* ThickSlider.h */,
+				1885D58F1CFDDF27004996BE /* ThickSlider.m */,
+				1885D5911CFDDF6B004996BE /* playControlBarSlider.h */,
+				1885D5921CFDDF6B004996BE /* playControlBarSlider.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -295,14 +313,16 @@
 				18A64C6F1CE8C82F00EFE8D7 /* MineViewController.m in Sources */,
 				18B3546C1CED8FB1006E898B /* BannerView.m in Sources */,
 				189615341CEF3DD100B5B501 /* PlayControlViewController.m in Sources */,
-				1885D5791CFC19DF004996BE /* ThickSlider.m in Sources */,
+				1885D5901CFDDF27004996BE /* ThickSlider.m in Sources */,
 				1874F6161CF05B20002E7154 /* ResourceProvider.m in Sources */,
 				18A64C6C1CE8C81E00EFE8D7 /* DiscoverViewController.m in Sources */,
 				18B354821CEDA654006E898B /* CollectionHeaderViewController.m in Sources */,
 				18B354691CED8641006E898B /* ScoreLabel.m in Sources */,
+				1885D5811CFDD5FF004996BE /* UIImage+RoundedCorner.m in Sources */,
 				1874F60F1CEF96B7002E7154 /* HCPlayer.m in Sources */,
 				1844D90E1CE43B2E00F6CADD /* AppDelegate.m in Sources */,
 				18A64C3E1CE8ACEB00EFE8D7 /* MainViewController.m in Sources */,
+				1885D5931CFDDF6B004996BE /* playControlBarSlider.m in Sources */,
 				1863160F1CF7292D00DF5DAD /* PlayerViewController.m in Sources */,
 				18A64C691CE8C7EB00EFE8D7 /* MusicHallViewController.m in Sources */,
 				1844D90B1CE43B2E00F6CADD /* main.m in Sources */,

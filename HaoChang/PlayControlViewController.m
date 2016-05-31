@@ -7,8 +7,10 @@
 //
 
 #import "PlayControlViewController.h"
+#import "UIImage+RoundedCorner.h"
 
 @interface PlayControlViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 
 @end
 
@@ -17,7 +19,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    UIImage *coverImage = [UIImage imageNamed:@"albumArt5"];
+    CGSize imageSize = coverImage.size;
+    self.coverImageView.image = [coverImage roundedCornerImageWithCornerRadius:imageSize.width / 2];
 }
 
 - (void)didReceiveMemoryWarning
