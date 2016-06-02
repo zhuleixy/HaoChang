@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, strong) NSMutableArray *pendingRequests;
 @property (nonatomic, strong) NSMutableData *receivedData;
+@property (nonatomic, strong) NSDictionary *resourceCacheInfo;
 @property (nonatomic, assign) NSInteger dataLength;
 @end
 
@@ -22,6 +23,7 @@
 {
     if (self = [super init]) {
         _pendingRequests = [NSMutableArray array];
+        _resourceCacheInfo = [NSDictionary dictionaryWithContentsOfFile:[self cacheInfoFilePath]];
     }
     return self;
 }
@@ -88,6 +90,21 @@
     [self processPendingRequests];
 }
 
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    if (!self.resourceCacheInfo) {
+        self.resourceCacheInfo = [NSDictionary dictionary];
+    }
+    NSMutableDictionary *tmpDic = [NSMutableDictionary dictionaryWithDictionary:self.resourceCacheInfo];
+    NSURL *URL = [[connection currentRequest] URL];
+    NSString *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
+    NSString *cacheFileName = [NSString stringWithFormat:@"%@.mp3", [self ret32bitString]];//不加后缀无法播放？？？
+    [self.receivedData writeToFile:[documentPath stringByAppendingPathComponent:cacheFileName] atomically:YES];
+    [tmpDic setObject:cacheFileName forKey:[URL absoluteString]];
+    self.resourceCacheInfo = [NSDictionary dictionaryWithDictionary:tmpDic];
+    [self.resourceCacheInfo writeToFile:[self cacheInfoFilePath] atomically:YES];
+}
+
 #pragma mark - Private
 
 - (void)sendRequest:(AVAssetResourceLoadingRequest *)loadingRequest
@@ -98,9 +115,6 @@
     NSURLComponents *components = [[NSURLComponents alloc] initWithURL:requestURL resolvingAgainstBaseURL:NO];
     components.scheme = @"http";
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[components URL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:20.0];
-    
-    // [request addValue:[NSString stringWithFormat:@"bytes=%ld-%ld",(unsigned long)0, (unsigned long)self.dataLength - 1] forHTTPHeaderField:@"Range"];
-    
     [self.connection cancel];
     self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
     [self.connection setDelegateQueue:[NSOperationQueue mainQueue]];
@@ -142,6 +156,20 @@
     NSData *respondData = [self.receivedData subdataWithRange:NSMakeRange((NSUInteger)offset, (NSUInteger)numberOfBytesToRespondWith)];
     [dataRequest respondWithData:respondData];
     return dataRequest.currentOffset == dataRequest.requestedOffset + dataRequest.requestedLength;
+}
+
+- (NSString *)cacheInfoFilePath
+{
+    NSString *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
+    NSString *infoFilePath = [documentPath stringByAppendingPathComponent:@"/cacheInfo"];
+    return infoFilePath;
+}
+
+- (NSString *)ret32bitString
+{
+    char data[32];
+    for (int x=0;x<32;data[x++] = (char)('A' + (arc4random_uniform(26))));
+    return [[NSString alloc] initWithBytes:data length:32 encoding:NSUTF8StringEncoding];
 }
 
 @end

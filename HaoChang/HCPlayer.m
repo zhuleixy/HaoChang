@@ -17,6 +17,7 @@
 @property (nonatomic, strong) ResourceProvider *resourceProvider;
 @property (nonatomic, strong) id playbackTimeObserver;
 @property (nonatomic, strong) NSURL *resourceURL;
+@property (nonatomic, strong) NSDictionary *resourceCacheInfo;
 @end
 
 @implementation HCPlayer
@@ -29,6 +30,16 @@
         sharedHCPlayerInstance = [[self alloc] init];
     });
     return sharedHCPlayerInstance;
+}
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        NSString *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+        NSString *infoFilePath = [documentPath stringByAppendingPathComponent:@"/cacheInfo"];
+        _resourceCacheInfo = [NSDictionary dictionaryWithContentsOfFile:infoFilePath];
+    }
+    return self;
 }
 
 - (void)dealloc
@@ -49,16 +60,26 @@
 
 - (void)setSongURL:(NSURL *)songURL;
 {
-    self.resourceURL = songURL;
-    NSURLComponents *components = [[NSURLComponents alloc] initWithURL:songURL resolvingAgainstBaseURL:NO];
-    components.scheme = @"streaming";
-    NSURL *playUrl = [components URL];
-    if (!self.resourceProvider) {
-        self.resourceProvider = [[ResourceProvider alloc] init];
+    NSString *cacheFileName = [self.resourceCacheInfo objectForKey:[songURL absoluteString]];
+    if (cacheFileName) {
+        NSString *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+        NSString *cacheFilePath = [documentPath stringByAppendingPathComponent:cacheFileName];
+        NSURL *localURL = [NSURL fileURLWithPath:cacheFilePath];
+        self.asset = [AVURLAsset URLAssetWithURL:localURL options:nil];
+        self.currentPlayerItem = [AVPlayerItem playerItemWithAsset:self.asset];
+    } else {
+        self.resourceURL = songURL;
+        NSURLComponents *components = [[NSURLComponents alloc] initWithURL:songURL resolvingAgainstBaseURL:NO];
+        components.scheme = @"streaming";
+        NSURL *playUrl = [components URL];
+        if (!self.resourceProvider) {
+            self.resourceProvider = [[ResourceProvider alloc] init];
+        }
+        self.asset = [AVURLAsset URLAssetWithURL:playUrl options:nil];
+        [self.asset.resourceLoader setDelegate:self.resourceProvider queue:dispatch_get_main_queue()];
+        self.currentPlayerItem = [AVPlayerItem playerItemWithAsset:self.asset];
     }
-    self.asset = [AVURLAsset URLAssetWithURL:playUrl options:nil];
-    [self.asset.resourceLoader setDelegate:self.resourceProvider queue:dispatch_get_main_queue()];
-    self.currentPlayerItem = [AVPlayerItem playerItemWithAsset:self.asset];
+    
     if (!self.player) {
         self.player = [AVPlayer playerWithPlayerItem:self.currentPlayerItem];
     } else {
