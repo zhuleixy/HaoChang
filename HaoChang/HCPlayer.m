@@ -60,6 +60,7 @@
 
 - (void)setSongURL:(NSURL *)songURL;
 {
+    self.resourceURL = songURL;
     NSString *cacheFileName = [self.resourceCacheInfo objectForKey:[songURL absoluteString]];
     if (cacheFileName) {
         NSString *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
@@ -68,7 +69,6 @@
         self.asset = [AVURLAsset URLAssetWithURL:localURL options:nil];
         self.currentPlayerItem = [AVPlayerItem playerItemWithAsset:self.asset];
     } else {
-        self.resourceURL = songURL;
         NSURLComponents *components = [[NSURLComponents alloc] initWithURL:songURL resolvingAgainstBaseURL:NO];
         components.scheme = @"streaming";
         NSURL *playUrl = [components URL];
