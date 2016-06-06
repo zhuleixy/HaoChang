@@ -10,4 +10,6 @@
 
 @interface ThickSlider : UISlider
 
+@property (nonatomic, assign) float cacheDataPercent;
+
 @end

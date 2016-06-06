@@ -10,11 +10,12 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @interface ResourceProvider ()
+
 @property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, strong) NSMutableArray *pendingRequests;
 @property (nonatomic, strong) NSMutableData *receivedData;
 @property (nonatomic, strong) NSDictionary *resourceCacheInfo;
-@property (nonatomic, assign) NSInteger dataLength;
+
 @end
 
 @implementation ResourceProvider
@@ -62,9 +63,9 @@
     NSDictionary *dic = (NSDictionary *)[httpResponse allHeaderFields];
     NSString *content = [dic valueForKey:@"Content-Range"];
     NSArray *array = [content componentsSeparatedByString:@"/"];
-    self.dataLength = [array.lastObject integerValue];
-    if (self.dataLength == 0) {
-        self.dataLength = (NSUInteger)httpResponse.expectedContentLength;
+    _totalDataLength = [array.lastObject integerValue];
+    if (self.totalDataLength == 0) {
+        _totalDataLength = (NSUInteger)httpResponse.expectedContentLength;
     }
     //将信息填入请求中，模拟服务器回复
     for (AVAssetResourceLoadingRequest *loadingRequest in self.pendingRequests)
@@ -75,7 +76,7 @@
             CFStringRef contentType = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)(sourceType), NULL);
             informationRequest.byteRangeAccessSupported = YES;
             informationRequest.contentType = CFBridgingRelease(contentType);
-            informationRequest.contentLength = self.dataLength;
+            informationRequest.contentLength = self.totalDataLength;
             break;
         }
     }
@@ -87,6 +88,9 @@
         self.receivedData = [NSMutableData data];
     }
     [self.receivedData appendData:data];
+    if ([self.delegate respondsToSelector:@selector(resourceProvider:receivedDataLengthDidChange:)]) {
+        [self.delegate resourceProvider:self receivedDataLengthDidChange:self.receivedData.length];
+    }
     [self processPendingRequests];
 }
 

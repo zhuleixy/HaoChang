@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+@class ResourceProvider;
+
+@protocol ResourceProviderDelegate <NSObject>
+
+- (void)resourceProvider:(ResourceProvider *)provider receivedDataLengthDidChange:(float)receivedDataLength;
+
+@end
+
 
 /**
  *  ResourceProvider用于缓存服务器数据
@@ -20,5 +28,8 @@
  */
 
 @interface ResourceProvider : NSObject <AVAssetResourceLoaderDelegate, NSURLConnectionDataDelegate>
+
+@property (nonatomic, readonly) float totalDataLength;
+@property (weak) id <ResourceProviderDelegate> delegate;
 
 @end

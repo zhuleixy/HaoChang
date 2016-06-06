@@ -36,6 +36,13 @@
     [self.HCPlayer addObserver:self forKeyPath:@"currentTime" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    UIImage *image = [self.HCPlayer isPlaying] ? [UIImage imageNamed:@"player_pause"] :
+                                                 [UIImage imageNamed:@"player_play"];
+    [self.playBtn setImage:image forState:UIControlStateNormal];
+}
+
 - (BOOL)prefersStatusBarHidden
 {
     return NO;
@@ -55,7 +62,6 @@
     }
 }
 
-
 - (IBAction)play:(id)sender
 {
     if (self.HCPlayer.isPlaying) {
@@ -63,7 +69,7 @@
         [self.playBtn setImage:[UIImage imageNamed:@"player_play"] forState:UIControlStateNormal];
     } else {
         if (![self.HCPlayer currentSongURL]) {
-            NSURL *songURL = [NSURL URLWithString:@"http://sc1.111ttt.com/2016/5/02/25/195251254501.mp3"];
+            NSURL *songURL = [NSURL URLWithString:@"http://up.haoduoge.com/mp3/2016-06-05/1465110357.mp3"];
             [self.HCPlayer setSongURL:songURL];
         }
         [self.HCPlayer play];

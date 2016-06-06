@@ -9,17 +9,19 @@
 #import "PlayerViewController.h"
 #import "MacroDefinition.h"
 #import "HCPlayer.h"
+#import "ThickSlider.h"
 
 @interface PlayerViewController ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *bottomBarView;
-@property (weak, nonatomic) IBOutlet UISlider *slider;
+@property (weak, nonatomic) IBOutlet ThickSlider *slider;
 @property (weak, nonatomic) IBOutlet UIButton *playBtn;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
 @property (strong, nonatomic) HCPlayer *HCPlayer;
 @property (strong, nonatomic) NSObject *playbackTimeObserver;
+@property (assign, nonatomic) BOOL isDragingSlider;
 
 @end
 
@@ -32,12 +34,24 @@
     _HCPlayer = [HCPlayer sharedInstance];
     [self.HCPlayer addObserver:self forKeyPath:@"duration" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:nil];
     [self.HCPlayer addObserver:self forKeyPath:@"currentTime" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:nil];
+    [self.HCPlayer addObserver:self forKeyPath:@"receivedDataPercent" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    UIImage *image = [self.HCPlayer isPlaying] ? [UIImage imageNamed:@"player_pause"] :
+    [UIImage imageNamed:@"player_play"];
+    [self.playBtn setImage:image forState:UIControlStateNormal];
 }
 
 - (void)initView
 {
     //进度条
     [self.slider setThumbImage:[UIImage imageNamed:@"play_barmove"] forState:UIControlStateNormal];
+    [self.slider addTarget:self action:@selector(playSliderChange:) forControlEvents:UIControlEventValueChanged]; //拖动滑竿更新时间
+    [self.slider addTarget:self action:@selector(playSliderChangeEnd:) forControlEvents:UIControlEventTouchUpInside];  //松手,滑块拖动停止
+    [self.slider addTarget:self action:@selector(playSliderChangeEnd:) forControlEvents:UIControlEventTouchUpOutside];
+    [self.slider addTarget:self action:@selector(playSliderChangeEnd:) forControlEvents:UIControlEventTouchCancel];
     //scrollView
     CGRect contentFrame = self.contentView.frame;
     contentFrame.size.width = kDeviceWidth;
@@ -62,13 +76,50 @@
     if ([keyPath isEqualToString:@"duration"]) {
         [self.slider setMaximumValue:self.HCPlayer.duration];
     } else if ([keyPath isEqualToString:@"currentTime"]) {
-        [self.slider setValue:self.HCPlayer.currentTime animated:YES];
+        if (!self.isDragingSlider) {
+            [self.slider setValue:self.HCPlayer.currentTime animated:YES];
+        }
+    } else if ([keyPath isEqualToString:@"receivedDataPercent"]) {
+        [self.slider setCacheDataPercent:self.HCPlayer.receivedDataPercent];
+        [self.slider setNeedsDisplay];
     }
 }
 
 - (UIStatusBarStyle) preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - Seek
+
+//手指结束拖动，播放器从当前点开始播放，开启滑竿的时间走动
+- (void)playSliderChangeEnd:(UISlider *)slider
+{
+    self.isDragingSlider = NO;
+    [self seekToTime:slider.value];
+}
+
+//手指正在拖动，播放器继续播放，但是停止滑竿的时间走动
+- (void)playSliderChange:(UISlider *)slider
+{
+    self.isDragingSlider = YES;
+    // [self updateCurrentTime:slider.value];
+}
+
+- (void)seekToTime:(CGFloat)seconds
+{
+    if (!self.HCPlayer.isPlaying) {
+        return;
+    }
+    seconds = MAX(0, seconds);
+    seconds = MIN(seconds, self.HCPlayer.duration);
+    if ((seconds / self.HCPlayer.duration) > self.HCPlayer.receivedDataPercent) {
+        return;
+    }
+    [self.HCPlayer pause];
+    [self.HCPlayer seekToTime:CMTimeMakeWithSeconds(seconds, NSEC_PER_SEC) completionHandler:^(BOOL finished) {
+        [self.HCPlayer play];
+    }];
 }
 
 #pragma mark - Action
@@ -86,7 +137,7 @@
         [self.playBtn setImage:[UIImage imageNamed:@"play_play"] forState:UIControlStateNormal];
     } else {
         if (![self.HCPlayer currentSongURL]) {
-            NSURL *songURL = [NSURL URLWithString:@"http://sc1.111ttt.com/2016/5/02/25/195251254501.mp3"];
+            NSURL *songURL = [NSURL URLWithString:@"http://up.haoduoge.com/mp3/2016-06-05/1465110357.mp3"];
             [self.HCPlayer setSongURL:songURL];
         }
         [self.HCPlayer play];

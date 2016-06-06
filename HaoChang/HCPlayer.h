@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
+#import "ResourceProvider.h"
 
-@interface HCPlayer : NSObject
+@interface HCPlayer : NSObject <ResourceProviderDelegate>
 
 @property (nonatomic, assign) NSTimeInterval duration;
 @property (nonatomic, assign) NSTimeInterval currentTime;
+@property (nonatomic, assign) float receivedDataPercent;
 
 + (instancetype)sharedInstance;
 
@@ -21,5 +24,6 @@
 - (void)pause;
 
 - (BOOL)isPlaying;
+- (void)seekToTime:(CMTime)time completionHandler:(void (^)(BOOL finished))completionHandler;
 
 @end

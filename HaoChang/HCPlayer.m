@@ -7,8 +7,6 @@
 //
 
 #import "HCPlayer.h"
-#import <AVFoundation/AVFoundation.h>
-#import "ResourceProvider.h"
 
 @interface HCPlayer ()
 @property (nonatomic, strong) AVURLAsset *asset;
@@ -74,6 +72,7 @@
         NSURL *playUrl = [components URL];
         if (!self.resourceProvider) {
             self.resourceProvider = [[ResourceProvider alloc] init];
+            self.resourceProvider.delegate = self;
         }
         self.asset = [AVURLAsset URLAssetWithURL:playUrl options:nil];
         [self.asset.resourceLoader setDelegate:self.resourceProvider queue:dispatch_get_main_queue()];
@@ -93,10 +92,7 @@
     return self.resourceURL;
 }
 
-- (BOOL)isPlaying
-{
-    return self.player.rate != 0.f;
-}
+#pragma mark - Play Control
 
 - (void)play
 {
@@ -107,6 +103,21 @@
 {
     [self.player pause];
 }
+
+- (void)seekToTime:(CMTime)time completionHandler:(void (^)(BOOL finished))completionHandler
+{
+
+    [self.player seekToTime:time completionHandler:completionHandler];
+}
+
+#pragma mark - States
+
+- (BOOL)isPlaying
+{
+    return self.player.rate != 0.f;
+}
+
+#pragma mark - Other
 
 - (void)updateInfo:(AVPlayerItem *)playerItem
 {
@@ -122,6 +133,11 @@
 - (void)updateCurrentTime:(NSTimeInterval)currentTime
 {
     [self setValue:@(currentTime) forKey:@"currentTime"];
+}
+
+- (void)resourceProvider:(ResourceProvider *)provider receivedDataLengthDidChange:(float)receivedDataLength
+{
+    self.receivedDataPercent = receivedDataLength / provider.totalDataLength;
 }
 
 @end
