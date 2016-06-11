@@ -16,6 +16,7 @@
 @property (nonatomic, strong) id playbackTimeObserver;
 @property (nonatomic, strong) NSURL *resourceURL;
 @property (nonatomic, strong) NSDictionary *resourceCacheInfo;
+@property (nonatomic, assign) BOOL isBuffering;
 @end
 
 @implementation HCPlayer
@@ -43,6 +44,11 @@
 - (void)dealloc
 {
     [self.currentPlayerItem removeObserver:self forKeyPath:@"status"];
+    [self.currentPlayerItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
+    [self.currentPlayerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
+    [self.currentPlayerItem removeObserver:self forKeyPath:@"playbackBufferFull"];
+    [self.currentPlayerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
+    
     [self.player removeTimeObserver:self.playbackTimeObserver];
     self.playbackTimeObserver = nil;
 }
@@ -52,6 +58,47 @@
     if ([keyPath isEqualToString:@"status"]) {
         if ([self.currentPlayerItem status] == AVPlayerStatusReadyToPlay) {
             [self updateInfo:self.currentPlayerItem];
+        }
+    } else if ([keyPath isEqualToString:@"playbackLikelyToKeepUp"]) {
+        
+        NSLog(@"playbackLikelyToKeepUp:%@", self.currentPlayerItem.playbackLikelyToKeepUp ? @"YES" : @"NO");
+        
+        
+    } else if ([keyPath isEqualToString:@"playbackBufferEmpty"]) {
+        
+        NSLog(@"playbackBufferEmpty:%@", self.currentPlayerItem.playbackBufferEmpty ? @"YES" : @"NO");
+        
+        self.isBuffering = YES;
+        
+    } else if ([keyPath isEqualToString:@"playbackBufferFull"]) {
+        
+        NSLog(@"playbackBufferFull:%@", self.currentPlayerItem.playbackBufferFull ? @"YES" : @"NO");
+        if (self.currentPlayerItem.playbackBufferFull) {
+            
+            [self play];
+            
+        }
+    } else if ([keyPath isEqualToString:@"loadedTimeRanges"]) {
+        
+        if (self.isBuffering) {
+            NSArray *loadedTimeRanges = [self.currentPlayerItem loadedTimeRanges];
+            CMTimeRange timeRange = [loadedTimeRanges.firstObject CMTimeRangeValue];// 获取缓冲区域
+            float startSeconds = CMTimeGetSeconds(timeRange.start);
+            float durationSeconds = CMTimeGetSeconds(timeRange.duration);
+            
+            NSLog(@"缓冲进度：%f",startSeconds + durationSeconds);
+            if (startSeconds + durationSeconds > CMTimeGetSeconds(self.currentPlayerItem.currentTime) + 10 ||
+                startSeconds + durationSeconds >= CMTimeGetSeconds(self.currentPlayerItem.duration)) {
+                [self play];
+                self.isBuffering = NO;
+            }
+                
+                
+//            NSTimeInterval timeInterval = startSeconds + durationSeconds;// 计算缓冲总进度
+//            CMTime duration = playerItem.duration;
+//            CGFloat totalDuration = CMTimeGetSeconds(duration);
+//            self.loadedProgress = timeInterval / totalDuration;
+//            [self.videoProgressView setProgress:timeInterval / totalDuration animated:YES];
         }
     }
 }
@@ -85,6 +132,13 @@
         [self.player replaceCurrentItemWithPlayerItem:self.currentPlayerItem];
     }
     [self.currentPlayerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    [self.currentPlayerItem addObserver:self forKeyPath:@"playbackLikelyToKeepUp" options:NSKeyValueObservingOptionNew context:nil];
+    [self.currentPlayerItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
+    [self.currentPlayerItem addObserver:self forKeyPath:@"playbackBufferFull" options:NSKeyValueObservingOptionNew context:nil];
+    [self.currentPlayerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
+    
+    
+    
 }
 
 - (NSURL*)currentSongURL
@@ -106,7 +160,7 @@
 
 - (void)seekToTime:(CMTime)time completionHandler:(void (^)(BOOL finished))completionHandler
 {
-
+    
     [self.player seekToTime:time completionHandler:completionHandler];
 }
 
@@ -126,8 +180,8 @@
     self.playbackTimeObserver = [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 2)
                                                                           queue:NULL
                                                                      usingBlock:^(CMTime time) {
-        [weakSelf updateCurrentTime:CMTimeGetSeconds([weakSelf.currentPlayerItem currentTime])];
-    }];
+                                                                         [weakSelf updateCurrentTime:CMTimeGetSeconds([weakSelf.currentPlayerItem currentTime])];
+                                                                     }];
 }
 
 - (void)updateCurrentTime:(NSTimeInterval)currentTime

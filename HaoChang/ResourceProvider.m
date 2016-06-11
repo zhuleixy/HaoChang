@@ -96,17 +96,17 @@
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    if (!self.resourceCacheInfo) {
-        self.resourceCacheInfo = [NSDictionary dictionary];
-    }
-    NSMutableDictionary *tmpDic = [NSMutableDictionary dictionaryWithDictionary:self.resourceCacheInfo];
-    NSURL *URL = [[connection currentRequest] URL];
-    NSString *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
-    NSString *cacheFileName = [NSString stringWithFormat:@"%@.mp3", [self ret32bitString]];//不加后缀无法播放？？？
-    [self.receivedData writeToFile:[documentPath stringByAppendingPathComponent:cacheFileName] atomically:YES];
-    [tmpDic setObject:cacheFileName forKey:[URL absoluteString]];
-    self.resourceCacheInfo = [NSDictionary dictionaryWithDictionary:tmpDic];
-    [self.resourceCacheInfo writeToFile:[self cacheInfoFilePath] atomically:YES];
+//    if (!self.resourceCacheInfo) {
+//        self.resourceCacheInfo = [NSDictionary dictionary];
+//    }
+//    NSMutableDictionary *tmpDic = [NSMutableDictionary dictionaryWithDictionary:self.resourceCacheInfo];
+//    NSURL *URL = [[connection currentRequest] URL];
+//    NSString *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
+//    NSString *cacheFileName = [NSString stringWithFormat:@"%@.mp3", [self ret32bitString]];//不加后缀无法播放？？？
+//    [self.receivedData writeToFile:[documentPath stringByAppendingPathComponent:cacheFileName] atomically:YES];
+//    [tmpDic setObject:cacheFileName forKey:[URL absoluteString]];
+//    self.resourceCacheInfo = [NSDictionary dictionaryWithDictionary:tmpDic];
+//    [self.resourceCacheInfo writeToFile:[self cacheInfoFilePath] atomically:YES];
 }
 
 #pragma mark - Private
